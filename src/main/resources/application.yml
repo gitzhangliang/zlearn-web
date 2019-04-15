@@ -33,6 +33,14 @@ spring:
           max-wait: -1
           min-idle: 0
         shutdown-timeout: 0
+    thymeleaf:
+      prefix: classpath:/templates
+      cache: false
+      suffix: .html
+      mode: HTML5
+      encoding: utf-8
+      servlet:
+        content-type: text/html
 
 
 
