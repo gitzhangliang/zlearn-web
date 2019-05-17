@@ -6,6 +6,7 @@ import com.zl.service.ICoderService;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -55,5 +56,16 @@ public class CoderServiceImpl implements ICoderService {
 
     private Coder findById(long id){
         return coderRepository.findById(id).orElseThrow(()->new RuntimeException("对象不存在"));
+    }
+
+    @Override
+    public void save(Coder coder){
+        saveCoder(coder);
+    }
+
+    @Transactional(rollbackFor = RuntimeException.class)
+    @Override
+    public void saveCoder(Coder coder){
+        coderRepository.save(coder);
     }
 }

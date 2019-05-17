@@ -1,6 +1,7 @@
 package com.zl.service;
 
 import com.zl.domain.Coder;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Cacheable;
 
@@ -16,4 +17,10 @@ public interface ICoderService {
     Coder find(long id);
 
     void saveToRedisByRedisTemplate(long id);
+
+    @Transactional(rollbackFor = RuntimeException.class)
+    void save(Coder coder);
+
+    @Transactional(rollbackFor = RuntimeException.class)
+    void saveCoder(Coder coder);
 }

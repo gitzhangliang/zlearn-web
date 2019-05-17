@@ -1,9 +1,5 @@
 package com.zl.domain;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTVerifier;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTVerificationException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,5 +23,5 @@ public class Coder implements Serializable{
     private String name;
     private int age;
     private BigDecimal salary;
-    private String companyId;
+    private long companyId;
 }

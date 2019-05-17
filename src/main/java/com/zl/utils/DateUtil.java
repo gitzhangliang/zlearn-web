@@ -172,6 +172,6 @@ public class DateUtil {
     }
 
     public static boolean isSameDay(Date date1, Date date2) {
-        return getYears(date1) == getYears(date1) && getMonth(date1) == getMonth(date2) && getDayOfMonth(date1) == getDayOfMonth(date2);
+        return getYears(date1) == getYears(date2) && getMonth(date1) == getMonth(date2) && getDayOfMonth(date1) == getDayOfMonth(date2);
     }
 }
