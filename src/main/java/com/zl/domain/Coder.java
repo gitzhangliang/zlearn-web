@@ -24,4 +24,6 @@ public class Coder implements Serializable{
     private int age;
     private BigDecimal salary;
     private long companyId;
+    private String mobile;
+    private String password;
 }
