@@ -34,7 +34,7 @@ spring:
         min-idle: 0
       shutdown-timeout: 0
   thymeleaf:
-    prefix: classpath:/templates
+    prefix: classpath:/templates/
     cache: false
     suffix: .html
     mode: HTML5
@@ -45,6 +45,8 @@ spring:
     multipart:
       max-file-size: -1
       max-request-size: -1
+  mvc:
+    static-path-pattern: /**
 
 logging:
   config: classpath:logback.xml

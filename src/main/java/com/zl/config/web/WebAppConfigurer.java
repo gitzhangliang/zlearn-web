@@ -11,13 +11,13 @@ import javax.annotation.Resource;
  * @author tzxx
  */
 @Configuration
-public class WebAppConfigurer implements WebMvcConfigurer {
+public class WebAppConfigurer implements WebMvcConfigurer{
 
     @Resource
     private JwtInterceptor jwtInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(jwtInterceptor).excludePathPatterns("/home/login","/coder/**","/chat","/sso/*");
+        registry.addInterceptor(jwtInterceptor).excludePathPatterns("/home/login","/coder/**","/chat","/sso/**","/static/**");
     }
 }

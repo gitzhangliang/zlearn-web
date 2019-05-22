@@ -7,7 +7,7 @@ import com.zl.utils.RSAUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,15 +24,15 @@ import java.util.Map;
  * @author tzxx
  * @date 2019/3/6.
  */
-@RequestMapping("/sso")
 @Controller
+@RequestMapping("/sso")
 public class SsoLoginController {
 
     @Autowired
     private RestTemplate restTemplate;
 
-    @RequestMapping("/")
-    public String login(Model model, HttpServletRequest request){
+    @GetMapping(value = "/index")
+    public String login(HttpServletRequest request){
         String sid = getCookie(request,"did");
         if(StringUtils.isNotBlank(sid)){
             return "success";
@@ -43,8 +43,8 @@ public class SsoLoginController {
 
 
 
-    @RequestMapping("/login")
-    public String login(HttpServletRequest request, HttpServletResponse response, Model model){
+    @GetMapping("/login")
+    public String login(HttpServletRequest request, HttpServletResponse response){
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         if("18612689497".equals(username) && "111111".equals(password)){
@@ -68,9 +68,8 @@ public class SsoLoginController {
     }
 
 
-    @RequestMapping("/sso/isLogin")
-    @ResponseBody
-    public String isLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    @RequestMapping("/isLogin")
+    public String isLogin(HttpServletRequest request,@RequestParam("url") String url) throws IOException {
         String sid = getCookie(request,"did");
         boolean isLogin = false;
         String mobile ="";
@@ -89,40 +88,29 @@ public class SsoLoginController {
         String token = RSAUtil.urlEncoder(RSAUtil.encryptBASE64(new Gson().toJson(map).getBytes()).replaceAll("\r\n",""));
         Map<String, Object> map1 = new HashMap<>();
         map1.put("token",token);
-        return "ssoUserIsLogin("+new Gson().toJson(map1)+")";
+        return "redirect:"+url+"?token="+token;
+
     }
 
 
-    @RequestMapping("/sso/callBack")
-    @ResponseBody
-    public String call(@RequestParam("token") String token){
-        if(token == null || "".equals(token)){
-            SSOCallBack callBack = new Gson().fromJson(new String(RSAUtil.decryptBASE64(RSAUtil.urlEncoder(token))), SSOCallBack.class);
+    @RequestMapping("/callBack")
+    public String ssoCallBack(HttpServletRequest request,HttpServletResponse response,@RequestParam("token") String token){
+        if(token != null && !"".equals(token)){
+            SSOCallBack callBack = new Gson().fromJson(new String(RSAUtil.decryptBASE64(RSAUtil.urlDecode(token))), SSOCallBack.class);
             if(System.currentTimeMillis() - callBack.getTime()<3*60*1000){
                 if(RSAUtil.verify(callBack.getContent(),callBack.getSign())){
                     if(callBack.isLogin()){
+                        Cookie cookie = new Cookie("did", "123");
+                        cookie.setMaxAge(7 * 24 * 60 * 60);
+                        cookie.setPath("/");
+                        response.addCookie(cookie);
                         return "success";
                     }
                 }
             }
         }
-        return "error";
+        return "login";
     }
-
-
-    public static void main(String[] args) {
-        String token = "eyJpc0xvZ2luIjoiZmFsc2UiLCJtb2JpbGUiOiIiLCJzaWduIjoicW9WRExzWjgzSzArdVk5TFNYM3lxU1VaNlA3UUR5R1hXNUwvUUhkVnpCVjdnRCtWaS9WV1g4OWx1QXFnekhoZGZBaXFHdkVKam5xZwowbFBhNk5kOVg2WFZWMWM0TGsrakVOdmg5VlovMlg2a0pMdTVqdkpuUTVOU3FsdStmT0dIekZVM1ZJY2VHdFphc3I1YmVDM0MrQTNCCjJOeDE1SElpczJORlBHOTkrd1E9CiIsInRpbWUiOiIxNTU4NDAyOTE0NDI5IiwiY29udGVudCI6InRpbWU9MTU1ODQwMjkxNDQyOSZtb2JpbGU9In0=";
-        SSOCallBack callBack = new Gson().fromJson(new String(RSAUtil.decryptBASE64(RSAUtil.urlDecode(token))), SSOCallBack.class);
-        if(true){
-            if(RSAUtil.verify(callBack.getContent(),callBack.getSign())){
-                if(callBack.isLogin()){
-                    System.out.println("success");
-                }
-            }
-        }
-
-    }
-
 
     @RequestMapping("/exit")
     public String logout(HttpServletResponse response, HttpServletRequest request){
@@ -130,9 +118,26 @@ public class SsoLoginController {
         return "login";
     }
 
+    /**
+     * 培训系统退出时同时退出青距
+     * @param request
+     * @param response
+     * @param url 培训系统退出url
+     * @return
+     */
+    @RequestMapping("/logout")
+    public String ssoLogout(HttpServletRequest request, HttpServletResponse response,@RequestParam("url") String url) {
+        deleteCookie(response,request);
+        return "redirect:"+url;
+    }
 
-
-    @RequestMapping("/sso/exist")
+    /**
+     * 培训系统询问是否存在某个用户
+     * @param response
+     * @param request
+     * @return
+     */
+    @RequestMapping("/exist")
     @ResponseBody
     public boolean exist(HttpServletResponse response, HttpServletRequest request){
         String mobile = request.getParameter("mobile");
@@ -141,22 +146,6 @@ public class SsoLoginController {
             return true;
         }
         return false;
-    }
-
-
-    /**
-     * 培训系统退出时同时退出青距(jsonp)
-     * @param request
-     * @param response
-     * @return
-     */
-    @RequestMapping("/sso/logout")
-    @ResponseBody
-    public String ssoLogout(HttpServletRequest request, HttpServletResponse response) {
-        deleteCookie(response,request);
-        Map<String, Object> map = new HashMap<>(16);
-        map.put("logout",true);
-        return "ssoUserLogout("+new Gson().toJson(map)+")";
     }
 
     private void deleteCookie(HttpServletResponse response, HttpServletRequest request){
@@ -174,7 +163,7 @@ public class SsoLoginController {
         }
     }
 
-    public static String getCookie(HttpServletRequest request, String key) {
+    public String getCookie(HttpServletRequest request, String key) {
         Cookie[] cookies = request.getCookies();
         String resValue = "";
         if(cookies != null && cookies.length > 0) {
@@ -194,4 +183,13 @@ public class SsoLoginController {
         response.addCookie(cookie);
     }
 
+    public static void main(String[] args) {
+        String token = "eyJpc0xvZ2luIjoiZmFsc2UiLCJtb2JpbGUiOiIiLCJzaWduIjoicW9WRExzWjgzSzArdVk5TFNYM3lxU1VaNlA3UUR5R1hXNUwvUUhkVnpCVjdnRCtWaS9WV1g4OWx1QXFnekhoZGZBaXFHdkVKam5xZwowbFBhNk5kOVg2WFZWMWM0TGsrakVOdmg5VlovMlg2a0pMdTVqdkpuUTVOU3FsdStmT0dIekZVM1ZJY2VHdFphc3I1YmVDM0MrQTNCCjJOeDE1SElpczJORlBHOTkrd1E9CiIsInRpbWUiOiIxNTU4NDAyOTE0NDI5IiwiY29udGVudCI6InRpbWU9MTU1ODQwMjkxNDQyOSZtb2JpbGU9In0=";
+        SSOCallBack callBack = new Gson().fromJson(new String(RSAUtil.decryptBASE64(RSAUtil.urlDecode(token))), SSOCallBack.class);
+        if(RSAUtil.verify(callBack.getContent(),callBack.getSign())){
+            if(callBack.isLogin()){
+                System.out.println("success");
+            }
+        }
+    }
 }

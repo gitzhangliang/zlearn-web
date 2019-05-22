@@ -10,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +40,9 @@ public class WebAspect {
 			List<String> params = new ArrayList<>();
 			if(joinPoint.getArgs().length>0){
 				for (Object obj : joinPoint.getArgs()) {
+					if(obj instanceof HttpServletRequest || obj instanceof HttpServletResponse){
+						continue;
+					}
 					params.add(JsonUtil.objToStr(obj));
 				}
 			}

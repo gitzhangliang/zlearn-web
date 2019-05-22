@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8" />
     <title>Insert title here</title>
-    <script src="./js/jquery-1.11.1.js"></script>
+    <script>
+        var qingjuPath = "http://127.0.0.1:7083";
+        var userPath = "http://zl.com:666";
+        function exit(){
+            window.location.href=qingjuPath+"/sso/logout?url="+userPath+"/sso/exit";
+        }
+    </script>
 </head>
 <body>
 <div>
   <h1>成功</h1>
+    <button onclick="exit()">注销</button>
 </div>
 </body>
 </html>
