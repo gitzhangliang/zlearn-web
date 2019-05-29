@@ -3,6 +3,7 @@ package com.zl.controller;
 
 import com.google.gson.Gson;
 import com.zl.model.sso.SSOCallBack;
+import com.zl.model.tree.orgtree.OrgDTO;
 import com.zl.utils.RSAUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +40,6 @@ public class SsoLoginController {
         }
         return "login";
     }
-
-
-
 
     @GetMapping("/login")
     public String login(HttpServletRequest request, HttpServletResponse response){
