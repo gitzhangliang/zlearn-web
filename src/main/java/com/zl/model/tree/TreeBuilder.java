@@ -42,7 +42,7 @@ public class TreeBuilder<T extends ITreeNode<T>> {
     }
 
     /**获取某一节点所有子孙节点
-     * @param id
+     * @param id  当前节点id
      * @return List<TreeNode>
      */
     public List<T> getAllChildren(String id) {
