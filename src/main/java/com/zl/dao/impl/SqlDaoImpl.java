@@ -57,8 +57,7 @@ public class SqlDaoImpl implements ISqlDao {
 			params.add(page.getSize());
 			arr = params.toArray();
 		}
-		RowMapper<T> rowMapper=new BeanPropertyRowMapper<T>(c);
-		List<T> list = jdbcTemplate.query(sql, rowMapper,arr);
-		return list;
+		RowMapper<T> rowMapper=new BeanPropertyRowMapper<>(c);
+		return jdbcTemplate.query(sql, rowMapper,arr);
 	}
 }

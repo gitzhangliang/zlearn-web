@@ -1,7 +1,6 @@
 package com.zl.exception;
 
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * @author tzxx

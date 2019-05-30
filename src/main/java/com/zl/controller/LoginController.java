@@ -4,6 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.zl.domain.Coder;
 import com.zl.exception.CoderException;
+import com.zl.model.request.CoderDto;
 import com.zl.repository.CoderRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class LoginController {
     private CoderRepository coderRepository;
 
     @PostMapping("/login")
-    public Object login(@RequestBody Coder coder){
+    public Object login(@RequestBody CoderDto coder){
         Coder c = coderRepository.findByName(coder.getName());
         if(c != null){
             return JWT.create().withClaim("name",c.getName())

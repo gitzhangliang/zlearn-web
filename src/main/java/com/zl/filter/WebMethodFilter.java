@@ -17,6 +17,7 @@ public class WebMethodFilter implements Filter {
 
     @Override
     public void init(FilterConfig config) throws ServletException {
+        //init
     }
 
 
@@ -33,6 +34,7 @@ public class WebMethodFilter implements Filter {
     }
 
     @Override
-    public void destroy() {
+    public void destroy(){
+        //destroy
     }
 }
