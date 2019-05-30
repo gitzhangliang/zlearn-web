@@ -1,8 +1,7 @@
 package com.zl.support;
 
 import com.zl.annotation.OriginalControllerReturnValue;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -17,9 +16,9 @@ import java.lang.annotation.Annotation;
  * @author tzxx
  */
 @ControllerAdvice(basePackages = "com.zl")
+@Slf4j
 public class GlobalRestfulResponseBodyAdvice implements ResponseBodyAdvice<Object> {
 
-    private Logger logger = LoggerFactory.getLogger(GlobalRestfulResponseBodyAdvice.class);
 
     @Override
     public Object beforeBodyWrite(Object obj, MethodParameter methodParameter, MediaType mediaType,
@@ -34,7 +33,7 @@ public class GlobalRestfulResponseBodyAdvice implements ResponseBodyAdvice<Objec
         if (obj instanceof JsonResult) {
             value = ( JsonResult ) obj;
         } else {
-            value = new JsonResult(obj);
+            value = new JsonResult<>(obj);
         }
         return value;
     }

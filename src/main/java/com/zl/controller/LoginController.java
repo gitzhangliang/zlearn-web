@@ -3,6 +3,7 @@ package com.zl.controller;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.zl.domain.Coder;
+import com.zl.exception.CoderException;
 import com.zl.repository.CoderRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +26,7 @@ public class LoginController {
             return JWT.create().withClaim("name",c.getName())
                     .sign( Algorithm.HMAC256(c.getName()));
         }
-        throw new RuntimeException("用户不存在");
+        throw new CoderException("用户不存在");
     }
 
     @GetMapping("/isLogin")

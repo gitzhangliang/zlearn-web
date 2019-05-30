@@ -24,8 +24,8 @@ public class WebAspect {
 	private Logger logger = LoggerFactory.getLogger(WebAspect.class);
 
 	@Pointcut("execution (* com.zl.controller..*.*(..))")
-
 	private void writeLog() {
+		//declare pointcut
 	}
 
 	@Around("writeLog()")
@@ -33,10 +33,10 @@ public class WebAspect {
 		Thread current = Thread.currentThread();
 		Object object = null;
 		if(logger.isInfoEnabled()){
-			StringBuffer buffer = new StringBuffer();
-			buffer.append(current.getId()+"-->"+joinPoint.getTarget());
-			logger.info(buffer.toString()+"-->methodName:{}", joinPoint.getSignature().getName());
-			buffer.append("-->"+joinPoint.getSignature().getName());
+			StringBuilder builder = new StringBuilder();
+			builder.append(current.getId()).append("-->").append(joinPoint.getTarget());
+			logger.info(builder.append("-->methodName:{}").toString(), joinPoint.getSignature().getName());
+			builder.append("-->").append(joinPoint.getSignature().getName());
 			List<String> params = new ArrayList<>();
 			if(joinPoint.getArgs().length>0){
 				for (Object obj : joinPoint.getArgs()) {
@@ -46,12 +46,12 @@ public class WebAspect {
 					params.add(JsonUtil.objToStr(obj));
 				}
 			}
-			logger.info(buffer.toString()+"-->allParameters:{}",  StringUtils.join(params.toArray()," ; "));
+			logger.info(builder.append("-->allParameters:{}").toString(),  StringUtils.join(params.toArray()," ; "));
 			Long startTime = System.currentTimeMillis();
 			object = joinPoint.proceed();
 			Long endTime = System.currentTimeMillis();
-			logger.info(buffer+"-->timeLength:{}", endTime-startTime);
-			logger.info(buffer+"-->returnValue:{}", object);
+			logger.info(builder.append("-->timeLength:{}").toString(), endTime-startTime);
+			logger.info(builder.append("-->returnValue:{}").toString(), object);
 		}
 		return object;
 

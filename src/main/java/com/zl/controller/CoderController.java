@@ -1,8 +1,9 @@
 package com.zl.controller;
 
 import com.zl.domain.Coder;
-import com.zl.repository.CoderRepository;
 import com.zl.service.ICoderService;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,22 +17,22 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("/coder")
+@Slf4j
 public class CoderController {
 
     @Resource
     private ICoderService coderService;
-    @Resource
-    private CoderRepository coderRepository;
+
 
     @GetMapping("/get/{id}")
     public Object get(@PathVariable long id){
-        System.out.println("load...");
+        log.info("load...");
         return coderService.get(id);
     }
 
     @GetMapping("/getForKeyGenerator/{id}")
     public Object getForKeyGenerator(@PathVariable long id){
-        System.out.println("load...");
+        log.info("load...");
         return coderService.getForKeyGenerator(id);
     }
 

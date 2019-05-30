@@ -18,11 +18,11 @@ public class RestTemplateConfiguration {
 	/**
 	 * 连接超时默认3s
 	 */
-	private int connectTimeout=3000;
+	private static final int CONNECT_TIMEOUT=3000;
 	/**
 	 * 读取超时默认30s
 	 */
-	private int readTimeout=30000;
+	private static final int READ_TIMEOUT=30000;
 
 
 	@Bean
@@ -34,8 +34,8 @@ public class RestTemplateConfiguration {
 	public ClientHttpRequestFactory simpleClientHttpRequestFactory(){
 		HttpClient httpClient = HttpClientBuilder.create().build();
 		HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory(httpClient);
-		factory.setConnectTimeout(this.connectTimeout);
-		factory.setReadTimeout(this.readTimeout);
+		factory.setConnectTimeout(CONNECT_TIMEOUT);
+		factory.setReadTimeout(READ_TIMEOUT);
 		return factory;
 	}
 
