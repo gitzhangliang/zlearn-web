@@ -1,5 +1,6 @@
 package com.zl;
 
+import com.zl.utils.RedisUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,20 +23,17 @@ public class RedisTest {
     private StringRedisTemplate stringRedisTemplate;
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
-
+    @Autowired
+    private RedisUtil redisUtil;
     @Test
     public void test(){
-
         // 保存字符串
         redisTemplate.opsForSet().add("set","1","2");
-
     }
     @Test
     public void test1(){
-
         // 保存字符串
         Set<Object> s = redisTemplate.opsForSet().members("set");
-
         s.forEach(System.out::println);
         redisTemplate.opsForSet().add("set","3","2");
 

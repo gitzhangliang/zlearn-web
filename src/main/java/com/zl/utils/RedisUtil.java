@@ -11,20 +11,20 @@ import java.util.concurrent.TimeUnit;
  * @author tzxx
  */
 @Component
-public class RedisUtil<V>{
+public class RedisUtil{
 
     @Resource
-    private RedisTemplate<String, V> redisTemplate;
+    private RedisTemplate<String, Object> redisTemplate;
 
-    public void set(String key,V value) {
+    public void set(String key,Object value) {
         redisTemplate.opsForValue().set(key,value);
     }
 
-    public V get(String key) {
+    public Object get(String key) {
         return redisTemplate.opsForValue().get(key);
     }
 
-    public void set(String key, V value, long timeout) {
+    public void set(String key, Object value, long timeout) {
         redisTemplate.opsForValue().set(key,value,timeout, TimeUnit.SECONDS);
     }
 
@@ -42,15 +42,15 @@ public class RedisUtil<V>{
         }
     }
 
-    public void addToSet(String key, V... value) {
+    public void addToSet(String key, Object... value) {
         redisTemplate.opsForSet().add(key,value);
     }
 
-    public Set<V> getFromSet(String key) {
+    public Set<Object> getFromSet(String key) {
         return redisTemplate.opsForSet().members(key);
     }
 
-    public void removeFromSet(String key, V... value) {
+    public void removeFromSet(String key, Object... value) {
         redisTemplate.opsForSet().remove(key,value);
     }
 
