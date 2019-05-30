@@ -2,8 +2,8 @@ package com.zl.controller;
 
 
 import com.google.gson.Gson;
+import com.zl.annotation.OriginalControllerReturnValue;
 import com.zl.model.sso.SSOCallBack;
-import com.zl.model.tree.orgtree.OrgDTO;
 import com.zl.utils.RSAUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +69,9 @@ public class SsoLoginController {
 
 
     @RequestMapping("/isLogin")
-    public String isLogin(HttpServletRequest request,@RequestParam("url") String url) throws IOException {
+    @ResponseBody
+    @OriginalControllerReturnValue
+    public String isLogin(HttpServletRequest request) throws IOException {
         String sid = getCookie(request,"did");
         boolean isLogin = false;
         String mobile ="";
@@ -88,7 +90,7 @@ public class SsoLoginController {
         String token = RSAUtil.urlEncoder(RSAUtil.encryptBASE64(new Gson().toJson(map).getBytes()).replaceAll("\r\n",""));
         Map<String, Object> map1 = new HashMap<>();
         map1.put("token",token);
-        return "redirect:"+url+"?token="+token;
+        return "ssoUserIsLogin("+new Gson().toJson(map1)+")";
 
     }
 
