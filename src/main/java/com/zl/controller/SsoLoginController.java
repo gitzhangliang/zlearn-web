@@ -41,6 +41,8 @@ public class SsoLoginController {
         return "login";
     }
 
+
+
     @GetMapping("/login")
     public String login(HttpServletRequest request, HttpServletResponse response){
         String username = request.getParameter("username");
