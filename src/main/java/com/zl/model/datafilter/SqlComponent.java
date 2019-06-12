@@ -17,9 +17,10 @@ public class SqlComponent {
 	/**
 	 * 原始sql
 	 */
-	private StringBuffer originalBf = new StringBuffer();
+	@Getter
+	private StringBuilder originalBd = new StringBuilder();
 
-	private StringBuffer sqlBf = new StringBuffer();
+	private StringBuilder sqlBd = new StringBuilder();
 		
 	private boolean where = false;
 	
@@ -29,23 +30,23 @@ public class SqlComponent {
 
 	private boolean select = false;
 
-	private StringBuffer orderByStr = new StringBuffer();
+	private StringBuilder orderByStr = new StringBuilder();
 
-	private StringBuffer limitStr = new StringBuffer();
+	private StringBuilder limitStr = new StringBuilder();
 	
 	public SqlComponent() {}
 	
 	public SqlComponent(String sql) {
 		select = true;
-		sqlBf.append(sql);
-		originalBf.append(sql);
+		sqlBd.append(sql);
+		originalBd.append(sql);
 	}
 	
-	public StringBuffer getSqlBf() {
+	public StringBuilder getSqlBf() {
 		if(where){
-			sqlBf = new StringBuffer(sqlBf.toString().replaceAll(" 1=1 and", ""));
+			sqlBd = new StringBuilder(sqlBd.toString().replaceAll(" 1=1 and", ""));
 		}
-		return sqlBf;
+		return sqlBd;
 	}
 	
 	public String getSql(){
@@ -58,7 +59,7 @@ public class SqlComponent {
 	 */
 	public SqlComponent where(boolean needJoinWhere) {
 		if(needJoinWhere){
-			sqlBf.append(" where 1=1");
+			sqlBd.append(" where 1=1");
 			where = true;
 		}
 		return this;
@@ -69,9 +70,9 @@ public class SqlComponent {
 	 * @param value
 	 * @return
 	 */
-	public SqlComponent addEquals(String column, Object value) {
+	public SqlComponent equals(String column, Object value) {
 		if(value != null && !"".equals(value)){
-			sqlBf.append(" and "+column+" = ?");
+			sqlBd.append(" and "+column+" = ?");
 			params.add(value);
 		}
 		return this;
@@ -82,9 +83,9 @@ public class SqlComponent {
 	 * @param value
 	 * @return
 	 */
-	public SqlComponent addNotEquals(String column, Object value) {
+	public SqlComponent notEquals(String column, Object value) {
 		if(value != null && !"".equals(value)){
-			sqlBf.append(" and "+column+" != ?");
+			sqlBd.append(" and "+column+" != ?");
 			params.add(value);
 		}
 		return this;
@@ -94,8 +95,8 @@ public class SqlComponent {
 	 * @param column
 	 * @return
 	 */
-	public SqlComponent addIsNull(String column) {
-		sqlBf.append(" and "+column+" is Null ");
+	public SqlComponent isNull(String column) {
+		sqlBd.append(" and "+column+" is Null ");
 		return this;
 	}
 
@@ -105,9 +106,9 @@ public class SqlComponent {
 	 * @param value
 	 * @return
 	 */
-	public SqlComponent addLike(String column, Object value) {
+	public SqlComponent like(String column, Object value) {
 		if(value != null && !"".equals(value)){
-			sqlBf.append(" and "+  column+" like ?");
+			sqlBd.append(" and "+  column+" like ?");
 			params.add("%"+value+"%");
 		}
 		return this;
@@ -118,9 +119,9 @@ public class SqlComponent {
 	 * @param value
 	 * @return
 	 */
-	public SqlComponent addGe(String column, Object value) {
+	public SqlComponent ge(String column, Object value) {
 		if(value != null && !"".equals(value)){
-			sqlBf.append(" and "+column+" >= ?");
+			sqlBd.append(" and "+column+" >= ?");
 			params.add(value);
 		}
 		return this;
@@ -130,9 +131,9 @@ public class SqlComponent {
 	 * @param value
 	 * @return
 	 */
-	public SqlComponent addGt(String column, Object value) {
+	public SqlComponent gt(String column, Object value) {
 		if(value != null && !"".equals(value)){
-			sqlBf.append(" and "+column+" > ?");
+			sqlBd.append(" and "+column+" > ?");
 			params.add(value);
 		}
 		return this;
@@ -142,9 +143,9 @@ public class SqlComponent {
 	 * @param value
 	 * @return
 	 */
-	public SqlComponent addLe(String column, Object value) {
+	public SqlComponent le(String column, Object value) {
 		if(value != null && !"".equals(value)){
-			sqlBf.append(" and "+column+" <= ?");
+			sqlBd.append(" and "+column+" <= ?");
 			params.add(value);
 		}
 		return this;
@@ -154,9 +155,9 @@ public class SqlComponent {
 	 * @param value
 	 * @return
 	 */
-	public SqlComponent addLt(String column, Object value) {
+	public SqlComponent lt(String column, Object value) {
 		if(value != null && !"".equals(value)){
-			sqlBf.append(" and "+column+" < ?");
+			sqlBd.append(" and "+column+" < ?");
 			params.add(value);
 		}
 		return this;
@@ -166,14 +167,14 @@ public class SqlComponent {
 	 * @param values
 	 * @return
 	 */
-	public <T extends Object> SqlComponent addIn(String column, Collection<T> values) {
+	public <T> SqlComponent in(String column, Collection<T> values) {
 		if(values != null && values.size()>0){
-			sqlBf.append(" and "+column+" in("+handleIn(values)+")");
+			sqlBd.append(" and "+column+" in("+handleIn(values)+")");
 			params.addAll(values);
 		}
 		return this;
 	}
-	private <T extends Object> String handleIn(Collection<T> list){
+	private <T> String handleIn(Collection<T> list){
 		StringBuilder builder = new StringBuilder();
 		for (T obj : list) {
 			builder.append("?,");
@@ -189,14 +190,14 @@ public class SqlComponent {
 	 */
 	public SqlComponent keyword(Object value, String... columns) {
 		if(value != null && !"".equals(value)){
-			sqlBf.append(" and (");
+			sqlBd.append(" and (");
 			for (String column : columns) {
-				sqlBf.append(column+" like ? or ");
+				sqlBd.append(column+" like ? or ");
 				params.add("%"+value+"%");
 			}
-			int index = sqlBf.lastIndexOf("or");
-			sqlBf = new StringBuffer(sqlBf.substring(0, index-1));
-			sqlBf.append(")");
+			int index = sqlBd.lastIndexOf("or");
+			sqlBd = new StringBuilder(sqlBd.substring(0, index-1));
+			sqlBd.append(")");
 		}
 		return this;
 	}
@@ -206,7 +207,7 @@ public class SqlComponent {
 	 * @return
 	 */
 	public SqlComponent keywordStart() {
-		sqlBf.append(" and (");
+		sqlBd.append(" and (");
 		return this;
 	}
 	/**关键字拼接模糊条件
@@ -216,7 +217,7 @@ public class SqlComponent {
 	 */
 	public SqlComponent keywordLike(String column, Object value) {
 		if(value != null && !"".equals(value)){
-			sqlBf.append(column+" like ? or ");
+			sqlBd.append(column+" like ? or ");
 			params.add("%"+value+"%");
 		}
 		return this;
@@ -229,7 +230,7 @@ public class SqlComponent {
 	 */
 	public SqlComponent keywordIn(String column, List<Object> values) {
 		if(values != null && values.size()>0){
-			sqlBf.append(column+" in("+handleIn(values)+") or");
+			sqlBd.append(column+" in("+handleIn(values)+") or");
 			params.addAll(values);
 		}
 		return this;
@@ -242,7 +243,7 @@ public class SqlComponent {
      */
     public SqlComponent keywordRegex(String column, String regexp) {
         if(regexp != null && !"".equals(regexp)){
-            sqlBf.append(column+" REGEXP  ? or ");
+            sqlBd.append(column+" REGEXP  ? or ");
             params.add(regexp);
         }
         return this;
@@ -258,7 +259,7 @@ public class SqlComponent {
 			if(isChineseIncluded(value.toString())){
 				return this;
 			}
-			sqlBf.append(column+" like ? or ");
+			sqlBd.append(column+" like ? or ");
 			params.add("%"+value+"%");
 		}
 		return this;
@@ -279,9 +280,9 @@ public class SqlComponent {
 	}
 	
 	public SqlComponent keywordEnd() {
-		int index = sqlBf.lastIndexOf("or");
-		sqlBf = new StringBuffer(sqlBf.substring(0, index).trim());
-		sqlBf.append(")");
+		int index = sqlBd.lastIndexOf("or");
+		sqlBd = new StringBuilder(sqlBd.substring(0, index).trim());
+		sqlBd.append(")");
 		return this;
 	}
 	/**排序，可多次调用
@@ -292,10 +293,10 @@ public class SqlComponent {
 	public SqlComponent orderBy(String column, String order){
 		if(orderBy){
 			orderByStr.append(" , "+column+" "+order);
-			sqlBf.append(" , "+column+" "+order);
+			sqlBd.append(" , "+column+" "+order);
 		}else{
 			orderByStr.append(" order by "+column+" "+order);
-			sqlBf.append(" order by "+column+" "+order);
+			sqlBd.append(" order by "+column+" "+order);
 			orderBy = true;
 		}
 		return this;
@@ -305,7 +306,7 @@ public class SqlComponent {
 	 * @return
 	 */
 	public SqlComponent limit(){
-		sqlBf.append(" limit ? ,?");
+		sqlBd.append(" limit ? ,?");
 		limitStr.append(" limit ? ,?");
 		return this;
 	}
@@ -315,7 +316,7 @@ public class SqlComponent {
 	 */
 	public SqlComponent limit(Page page){
 		paged = true;
-		sqlBf.append(" limit ? ,?");
+		sqlBd.append(" limit ? ,?");
 		limitStr.append(" limit ? ,?");
 		params.add((page.getPage()-1)*(page.getSize()));
 		params.add(page.getSize());
@@ -327,7 +328,7 @@ public class SqlComponent {
 	 * @return
 	 */
 	public SqlComponent groupBy(String column){
-		sqlBf.append(" group by "+column);
+		sqlBd.append(" group by "+column);
 		return this;
 	}
 	
@@ -336,7 +337,7 @@ public class SqlComponent {
 	 * @return
 	 */
 	public SqlComponent addOtherCondition(String condition){
-		sqlBf.append(condition);
+		sqlBd.append(condition);
 		return this;
 	}
 	
@@ -347,7 +348,7 @@ public class SqlComponent {
 	 */
 	public SqlComponent regex(String column,String regexp){
 		if(regexp != null && !"".equals(regexp)){
-			sqlBf.append(" and "+column+" REGEXP  ?");
+			sqlBd.append(" and "+column+" REGEXP  ?");
 			params.add(regexp);
 		}
 		return this;
@@ -358,7 +359,7 @@ public class SqlComponent {
 	 * @return
 	 */
 	public SqlComponent count(){
-		StringBuffer countSql =  new StringBuffer("select count(*) ");
+		StringBuilder countSql =  new StringBuilder("select count(*) ");
 		String dataSql = getSql();
 		if(limitStr.toString().length() > 1){
 			dataSql = dataSql.replace(limitStr.toString(),"");
@@ -369,9 +370,9 @@ public class SqlComponent {
 		String from = from(dataSql);
 		countSql.append(from);
 		if(orderByStr.toString().length() > 1){
-			countSql = new StringBuffer(countSql.toString().replaceAll(orderByStr.toString(),""));
+			countSql = new StringBuilder(countSql.toString().replaceAll(orderByStr.toString(),""));
 		}
-		sqlBf = countSql;
+		sqlBd = countSql;
 		return this;
 	}
 
@@ -389,7 +390,7 @@ public class SqlComponent {
 	 * @return
 	 */
 	public SqlComponent unionAll(String sql) {
-		sqlBf.append(" union all "+sql);
+		sqlBd.append(" union all "+sql);
 		return this;
 	}
 
@@ -398,7 +399,7 @@ public class SqlComponent {
 	 * @return
 	 */
 	public SqlComponent unionAllAsTable(String str) {
-		sqlBf.append(str);
+		sqlBd.append(str);
 		return this;
 	}
 }

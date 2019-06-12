@@ -88,6 +88,11 @@ public class PoiExportExcelUtil {
 		cellStyle.setDataFormat(dataFormat.getFormat("yyyy年mm月dd日"));
 		return this;
 	}
+	public PoiExportExcelUtil setDecimal(Workbook wb) {
+		DataFormat dataFormat = wb.createDataFormat();
+		cellStyle.setDataFormat(dataFormat.getFormat("yyyy年mm月dd日"));
+		return this;
+	}
 	public PoiExportExcelUtil onlySetTextAndWrap(Workbook wb) {
 		cellStyle = wb.createCellStyle();
 		cellStyle.setWrapText(true);

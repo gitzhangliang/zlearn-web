@@ -53,7 +53,7 @@ public class DingTalkComponent {
 		uriVariables.put("corpsecret", CORPSECRET);
 		DingTalkTokenCallBack result = restTemplate.getForObject(url, DingTalkTokenCallBack.class, uriVariables);
 		if(!SUCCESS_CODE.equals(result.getErrcode())){
-			logger.info("getAccessToken dingTalkMessage:" + result.getErrmsg());
+			logger.info("getAccessToken dingTalkMessage:{}" , result.getErrmsg());
 		}
 		return result.getAccess_token();
 	}
@@ -61,11 +61,11 @@ public class DingTalkComponent {
 	public String getJsApiTicket() {
 		String accessToken = DingTalkComponent.accessToken;
 		String url ="https://oapi.dingtalk.com/get_jsapi_ticket?access_token={accessToken}&type=jsapi";
-		Map<String, Object> uriVariables = new HashMap<String, Object>();
+		Map<String, Object> uriVariables = new HashMap<>();
 		uriVariables.put("accessToken", accessToken);
 		DingTalkJsApiTicket result = restTemplate.getForObject(url, DingTalkJsApiTicket.class, uriVariables);
 		if(!SUCCESS_CODE.equals(result.getErrcode())){
-			logger.info("getJsApiTicket dingTalkMessage:" + result.getErrmsg());
+			logger.info("getJsApiTicket dingTalkMessage:{}",  result.getErrmsg());
 		}
 		return result.getTicket();
 	}
