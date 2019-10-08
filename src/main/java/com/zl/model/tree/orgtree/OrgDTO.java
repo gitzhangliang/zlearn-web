@@ -4,11 +4,15 @@ package com.zl.model.tree.orgtree;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.zl.model.tree.ITreeNode;
 import com.zl.model.tree.TreeBuilder;
+import com.zl.utils.CollectionUtil;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
 /**
  * @author tzxx
  */
@@ -77,6 +81,14 @@ public class OrgDTO implements ITreeNode<OrgDTO> {
 
 		TreeBuilder<OrgDTO> tree = new TreeBuilder<>(dtos);
 		System.out.println(tree.treeJsonData());
+
+		CollectionUtil.listToMap(dtos,"id").forEach((k,v)->{
+			System.out.println(k+"---"+v.getParentId());
+		});
+		dtos.stream()
+				 .collect(Collectors.toMap(OrgDTO::getId, Function.identity())).forEach((k,v)->{
+			System.out.println(k+"---"+v.getParentId());
+		});
 	}
 
 }
