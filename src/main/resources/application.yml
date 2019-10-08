@@ -50,3 +50,7 @@ spring:
 
 logging:
   config: classpath:logback.xml
+
+
+cache:
+  type: redis
