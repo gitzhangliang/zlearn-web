@@ -123,9 +123,4 @@ public class RSAUtil {
             throw new RuntimeException();
         }
     }
-
-    public static void main(String[] args) {
-        String s = "http%3A//127.0.0.1%3A7080/";
-        System.out.println(urlDecode(s));
-    }
 }

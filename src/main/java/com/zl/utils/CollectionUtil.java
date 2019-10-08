@@ -2,9 +2,7 @@ package com.zl.utils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class CollectionUtil {
 
@@ -67,5 +65,20 @@ public class CollectionUtil {
         char[] array = str.toCharArray();
         array[0] -= 32;
         return String.valueOf(array);
+    }
+
+    public static <K,V> Map<K,V> listToMap(List<V> data,String field){
+        Map<K,V> map = new HashMap<>(16);
+        for (V datum : data) {
+            String getMethod ="get"+firstLetterToUpper(field);
+            try {
+                Method m = datum.getClass().getMethod(getMethod);
+                K aValue = (K)m.invoke(datum);
+                map.put(aValue,datum);
+            } catch (Exception e) {
+                throw new RuntimeException(e.getMessage());
+            }
+        }
+        return map;
     }
 }
