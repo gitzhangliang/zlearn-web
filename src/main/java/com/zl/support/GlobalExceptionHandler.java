@@ -17,7 +17,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public JsonResult<Object> jsonErrorHandler(Exception ex) {
         JsonResult<Object> value =  new JsonResult<>(-1, ex.getMessage());
-        log.error("global_exception_handler_print_error", ex);
+        log.error("global_exception_handler_print_error:{0}", ex);
         return value;
     }
 
@@ -25,7 +25,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public JsonResult<Object> jsonCoderExceptionHandler(CoderException ex) {
         JsonResult<Object> value =  new JsonResult<>(ex.getCode(), ex.getMessage());
-        log.error("coderException", ex);
+        log.error("coderException:{0}", ex);
         return value;
     }
 
