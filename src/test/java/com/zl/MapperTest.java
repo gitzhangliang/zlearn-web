@@ -1,5 +1,6 @@
 package com.zl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zl.domain.Coder;
 import com.zl.mapper.CoderMapper;
 import org.apache.ibatis.jdbc.SQL;
@@ -28,6 +29,20 @@ public class MapperTest {
         List<Coder> userList = coderMapper.selectList(null);
         userList.forEach(System.out::println);
     }
+
+    @Test
+    public void testSelect1() {
+        Coder coder = new Coder();
+        coder.setName("序员0");
+        coder.setAge(1);
+        coder.setCompanyId(50999);
+        QueryWrapper<Coder> wrapper = new QueryWrapper<>();
+        wrapper.lambda().eq(Coder::getName,coder.getName());
+        List<Coder> userList = coderMapper.selectList(wrapper);
+        userList.forEach(System.out::println);
+
+    }
+
 
     @Test
     public void testInsert() {

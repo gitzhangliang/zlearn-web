@@ -33,16 +33,14 @@ public class OrgDTO implements ITreeNode<OrgDTO> {
 	private List<OrgDTO> children = new ArrayList<>();
 
 	@Override
-	public String id() {
-		return this.getId();
+	public Object id() {
+		return getId();
 	}
-
 
 	@Override
-	public String parentId() {
-		return this.getParentId();
+	public Object parentId() {
+		return getParentId();
 	}
-
 
 	@Override
 	public void addChild(OrgDTO orgDTO) {
@@ -79,7 +77,7 @@ public class OrgDTO implements ITreeNode<OrgDTO> {
 		dtos.add(dto4);
 		dtos.add(dto5);
 
-		TreeBuilder<OrgDTO> tree = new TreeBuilder<>(dtos);
+		TreeBuilder<OrgDTO> tree = new TreeBuilder<>(dtos,"");
 		System.out.println(tree.treeJsonData());
 
 		CollectionUtil.listToMap(dtos,"id").forEach((k,v)->{

@@ -1,35 +1,45 @@
 package com.zl.model.tree;
 
 import com.alibaba.fastjson.JSONObject;
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
  * @author tzxx
  */
 public class TreeBuilder<T extends ITreeNode<T>> {
-    private HashMap<String, T> treeNodesMap = new HashMap<>();
+    private LinkedHashMap<Object, T> treeNodesMap = new LinkedHashMap<>();
     private List<T> rootNodesList = new ArrayList<>();
 
-    public TreeBuilder(List<T> list){
+    /**
+     * @param list 平行关系的数据集合
+     * @param predicate 判断根节点
+     * @param r 和parentId比较的值，以此判断是否为根节点
+     * @param <R> 和parentId比较的值的类型
+     */
+    public <R> TreeBuilder(List<T> list, TreePredicate<T,R> predicate, R r){
         for(T t : list){
             treeNodesMap.put(t.id(), t);
         }
         treeNodesMap.values().forEach(v->{
-            if(StringUtils.isNotBlank(v.parentId())){
+            if(!predicate.test(v,r)){
                 T p = treeNodesMap.get(v.parentId());
                 if(p != null){
                     p.addChild(v);
                 }
+            }else {
+                rootNodesList.add(v);
             }
         });
-        treeNodesMap.values().stream().filter(v->v.parentId() == null || "".equals(v.parentId())).forEach(e->rootNodesList.add(e));
     }
 
-    protected T getTreeNode(String id) {
+    public <R> TreeBuilder(List<T> list, R r){
+        this(list,TreePredicate.rootNodePredicate(),r);
+    }
+
+    protected T getTreeNode(Object id) {
         return treeNodesMap.get(id);
     }
 
@@ -45,7 +55,7 @@ public class TreeBuilder<T extends ITreeNode<T>> {
      * @param id  当前节点id
      * @return List<TreeNode>
      */
-    public List<T> getAllChildren(String id) {
+    public List<T> getAllChildren(Object id) {
         List<T> allChildren = new ArrayList<>(16);
         T treeNode = getTreeNode(id);
         for (T t : treeNode.children()) {
@@ -56,10 +66,8 @@ public class TreeBuilder<T extends ITreeNode<T>> {
     }
 
     /**获取某一节点所有祖父节点
-     * @param id key
-     * @return List<TreeNode>
      */
-    public List<T> getAllParent(String id) {
+    public List<T> getAllParent(Object id) {
         List<T> allParent = new ArrayList<>(16);
         T treeNode = getTreeNode(id);
         T parent = treeNodesMap.get(treeNode.parentId());

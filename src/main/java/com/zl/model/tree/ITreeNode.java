@@ -7,9 +7,9 @@ import java.util.List;
  */
 public interface ITreeNode<T> {
 
-    String id();
+	Object id();
 
-    String parentId();
+	Object parentId();
 
 	void addChild(T t);
 
