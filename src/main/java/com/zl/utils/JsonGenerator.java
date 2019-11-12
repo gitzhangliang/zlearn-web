@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**根据对象class生成json字符串,支持无限极嵌套，不支持循环引用。
+/**根据对象class生成json字符串,支持无限极嵌套，不支持循环引用，不支持初始化父类字段。
  * 解决问题:第三方json库不会将空集合或数组对象序列化成json字符串或者序列化成[],因为集合或
  *          数组是null或者是空集合、空数组。
  * 功能：初始化嵌套的自定义的javabean
@@ -57,8 +57,10 @@ public class JsonGenerator {
                 } else if (type.isArray()) {
                     handleArray(declaredField,o,type);
                 } else {
+                    //自定义javabean
                     Object o1 = type.newInstance();
                     declaredField.set(o, o1);
+                    setDefaultValue(type,o1);
                 }
             }
         }
@@ -126,7 +128,7 @@ public class JsonGenerator {
      * @return boolean trues 是 ,false 否
      */
     private static boolean isBaseTypePackaging(Class c) {
-        return c.equals(Integer.class) || c.equals(Byte.class) || c.equals(Long.class) || c.equals(Double.class) || c.equals(Float.class) || c.equals(Character.class) || c.equals(Short.class) || c.equals(Boolean.class);
+        return c.equals(java.lang.Integer.class) || c.equals(java.lang.Byte.class) || c.equals(java.lang.Long.class) || c.equals(java.lang.Double.class) || c.equals(java.lang.Float.class) || c.equals(java.lang.Character.class) || c.equals(java.lang.Short.class) || c.equals(java.lang.Boolean.class);
     }
 
     /**生成对象的json字符串
