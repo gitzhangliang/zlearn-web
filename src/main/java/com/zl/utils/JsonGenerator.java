@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**根据对象class生成json字符串,支持无限极嵌套，不支持循环引用，不支持初始化父类字段。
+/**根据对象class生成json字符串,支持无限层级嵌套，不支持循环引用，不支持初始化父类字段。
  * 解决问题:第三方json库不会将空集合或数组对象序列化成json字符串或者序列化成[],因为集合或
  *          数组是null或者是空集合、空数组。
  * 功能：初始化嵌套的自定义的javabean
