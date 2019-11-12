@@ -19,8 +19,8 @@ import java.util.List;
  * 功能：初始化嵌套的自定义的javabean
  *      初始化嵌套的集合或数组并且添加一个对象进去
  *      初始化嵌套的日期类型
- * 调用支持：自定义javabean,如:User;
- *          自定义javabean的集合或数组,如:List<User>或User[]
+ * 调用支持：自定义javabean,如:User,调用generatorForObject方法
+ *          自定义javabean的集合或数组,如:List<User>或User[],调用generatorForListOrArray方法
  * 自定义javabean中可嵌套的字段属性类型有：
  * 1.基本类型及其包装类
  * 2.基本类型及其包装类的集合或数组
