@@ -1,12 +1,7 @@
 package com.zl.model.excel;
 
-import org.apache.poi.hssf.usermodel.HSSFCellStyle;
-import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.util.HSSFColor;
-import org.apache.poi.xssf.usermodel.XSSFCellStyle;
-import org.apache.poi.xssf.usermodel.XSSFDataFormat;
-import org.apache.poi.xssf.usermodel.XSSFFont;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.ss.usermodel.*;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -121,30 +116,29 @@ public class ExcelUtils {
 		return String.valueOf(objectValue);
 	}
 
-	public static XSSFCellStyle getTitleStyle(XSSFWorkbook workbook) {
-		XSSFCellStyle style = workbook.createCellStyle();
-		style.setFillForegroundColor(HSSFColor.LIGHT_YELLOW.index);
-		style.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
-		style.setBorderBottom(HSSFCellStyle.BORDER_THIN);
-		style.setBorderLeft(HSSFCellStyle.BORDER_THIN);
-		style.setBorderRight(HSSFCellStyle.BORDER_THIN);
-		style.setBorderTop(HSSFCellStyle.BORDER_THIN);
-		style.setAlignment(HSSFCellStyle.ALIGN_CENTER);
-		style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
+	public static CellStyle getTitleStyle(Workbook workbook) {
+		CellStyle style = workbook.createCellStyle();
+		style.setFillForegroundColor(HSSFColor.HSSFColorPredefined.LIGHT_YELLOW.getIndex());
+		style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+		style.setBorderBottom(BorderStyle.THIN);
+		style.setBorderLeft(BorderStyle.THIN);
+		style.setBorderRight(BorderStyle.THIN);
+		style.setBorderTop(BorderStyle.THIN);
+		style.setAlignment(HorizontalAlignment.CENTER);
+		style.setVerticalAlignment(VerticalAlignment.CENTER);
 		// 生成另一个字体
-		XSSFFont font = workbook.createFont();
-		font.setBoldweight(HSSFFont.BOLDWEIGHT_NORMAL);
+		Font font = workbook.createFont();
 		font.setFontName("微软雅黑");
 		// 把字体应用到当前的样式
 		style.setFont(font);
 		return style;
 	}
-	
-	public static XSSFCellStyle getDoubleStyle(XSSFWorkbook wb) {
-    	XSSFCellStyle style = wb.createCellStyle();
-		XSSFDataFormat format3 = wb.createDataFormat();
+
+	public static CellStyle getDoubleStyle(Workbook wb) {
+    	CellStyle style = wb.createCellStyle();
+		DataFormat format3 = wb.createDataFormat();
 		style.setDataFormat(format3.getFormat("#,##0.00"));
-		style.setAlignment(HSSFCellStyle.ALIGN_RIGHT);
+		style.setAlignment(HorizontalAlignment.RIGHT);
 		// 生成另一个字体
 //		XSSFFont font = wb.createFont();
 //		font.setBoldweight(HSSFFont.BOLDWEIGHT_NORMAL);
