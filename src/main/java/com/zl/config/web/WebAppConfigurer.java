@@ -18,6 +18,7 @@ public class WebAppConfigurer implements WebMvcConfigurer{
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(jwtInterceptor).excludePathPatterns("/home/login","/coder/**","/chat","/sso/**","/static/**");
+        registry.addInterceptor(jwtInterceptor)
+                .excludePathPatterns("/home/login","/coder/**","/chat","/sso/**","/static/**","/excel/**");
     }
 }
