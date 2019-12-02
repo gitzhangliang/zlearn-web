@@ -18,9 +18,7 @@ public interface ICoderService {
 
     void saveToRedisByRedisTemplate(long id);
 
-    @Transactional(rollbackFor = RuntimeException.class)
     void save(Coder coder);
 
-    @Transactional(rollbackFor = RuntimeException.class)
     void saveCoder(Coder coder);
 }

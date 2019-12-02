@@ -184,14 +184,4 @@ public class SsoLoginController {
         cookie.setPath("/");
         response.addCookie(cookie);
     }
-
-    public static void main(String[] args) {
-        String token = "eyJpc0xvZ2luIjoiZmFsc2UiLCJtb2JpbGUiOiIiLCJzaWduIjoicW9WRExzWjgzSzArdVk5TFNYM3lxU1VaNlA3UUR5R1hXNUwvUUhkVnpCVjdnRCtWaS9WV1g4OWx1QXFnekhoZGZBaXFHdkVKam5xZwowbFBhNk5kOVg2WFZWMWM0TGsrakVOdmg5VlovMlg2a0pMdTVqdkpuUTVOU3FsdStmT0dIekZVM1ZJY2VHdFphc3I1YmVDM0MrQTNCCjJOeDE1SElpczJORlBHOTkrd1E9CiIsInRpbWUiOiIxNTU4NDAyOTE0NDI5IiwiY29udGVudCI6InRpbWU9MTU1ODQwMjkxNDQyOSZtb2JpbGU9In0=";
-        SSOCallBack callBack = new Gson().fromJson(new String(RSAUtil.decryptBASE64(RSAUtil.urlDecode(token))), SSOCallBack.class);
-        if(RSAUtil.verify(callBack.getContent(),callBack.getSign())){
-            if(callBack.isLogin()){
-                System.out.println("success");
-            }
-        }
-    }
 }

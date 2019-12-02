@@ -16,6 +16,5 @@ public interface ICompanyService {
 
     void saveForCheckPropagate();
 
-    @Transactional(rollbackFor = RuntimeException.class)
     void saveForCheckRollback();
 }
