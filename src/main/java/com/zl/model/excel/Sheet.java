@@ -38,5 +38,13 @@ public class Sheet implements Iterable<SubTable>{
 	public void setSheetName(String sheetName) {
 		this.sheetName = sheetName;
 	}
-	
+
+	public static void main(String[] args) {
+		Sheet sheet = new Sheet();
+		sheet.tables.add(new SubTable());
+		sheet.tables.add(new SubTable());
+		for (SubTable subTable : sheet) {
+			System.out.println(subTable.toString());
+		}
+	}
 }

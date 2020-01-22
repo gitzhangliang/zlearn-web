@@ -17,11 +17,12 @@ import java.util.stream.Collectors;
 @Slf4j
 public class MultiHeadersDataListener<E> extends AbstractDataListener<E>{
 
-    private int headRowNumber = 2;
+    private int headRowNumber;
 
 
-    public MultiHeadersDataListener(Class<E> c){
-        super(c,true);
+    public MultiHeadersDataListener(Class<E> c,boolean validate,int headRowNumber){
+        super(c,validate);
+        this.headRowNumber  = headRowNumber;
     }
 
     @Override

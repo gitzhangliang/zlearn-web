@@ -3,8 +3,12 @@ package com.zl.utils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
@@ -26,16 +30,16 @@ public class PoiImportExcelUtil {
     * @param cell  
     * @param rownum 行号
     */  
-    public String readCellValue(Sheet sheet, Row row, Cell cell, int rownum) {      
+    public String readCellValue(Workbook workbook,Sheet sheet, Row row, Cell cell, int rownum) {
     	if(cell==null){
     		return "";
     	}
         boolean isMerge = isMergedRegion(sheet, rownum, cell.getColumnIndex());  
         //判断是否具有合并单元格  
         if(isMerge) {  
-        	return getMergedRegionValue(sheet, row.getRowNum(), cell.getColumnIndex());  
+        	return getMergedRegionValue(workbook,sheet, row.getRowNum(), cell.getColumnIndex());
         }else {  
-            return getCellValue(cell);  
+            return getCellValue(cell,workbook);
         } 
     } 
       
@@ -46,7 +50,7 @@ public class PoiImportExcelUtil {
     * @param column   
     * @return   
     */    
-    public String getMergedRegionValue(Sheet sheet ,int row , int column){    
+    public String getMergedRegionValue(Workbook workbook,Sheet sheet ,int row , int column){
         
         int sheetMergeCount = sheet.getNumMergedRegions();    
         
@@ -62,7 +66,7 @@ public class PoiImportExcelUtil {
                 if(column >= firstColumn && column <= lastColumn){    
                     Row fRow = sheet.getRow(firstRow);    
                     Cell fCell = fRow.getCell(firstColumn);    
-                    return getCellValue(fCell) ;    
+                    return getCellValue(fCell,workbook) ;
                 }    
             }    
         }    
@@ -102,7 +106,7 @@ public class PoiImportExcelUtil {
     * @param cell   
     * @return   
     */    
-    public String getCellValue(Cell cell){    
+    public String getCellValue(Cell cell,Workbook workbook){
             
         if(cell == null) return "";    
             
@@ -110,8 +114,11 @@ public class PoiImportExcelUtil {
             return cell.getStringCellValue();                    
         }else if(cell.getCellTypeEnum() == CellType.BOOLEAN){                    
             return String.valueOf(cell.getBooleanCellValue());                   
-        }else if(cell.getCellTypeEnum() == CellType.FORMULA){                    
-            return cell.getCellFormula() ;                    
+        }else if(cell.getCellTypeEnum() == CellType.FORMULA){
+            DataFormatter df = new DataFormatter();
+            FormulaEvaluator formulaEval = workbook.getCreationHelper().createFormulaEvaluator();
+            String v = df.formatCellValue(cell, formulaEval);
+            return v;
         }else if(cell.getCellTypeEnum() == CellType.NUMERIC){
             DecimalFormat df = new DecimalFormat();
             String value =df.format(cell.getNumericCellValue());
@@ -154,5 +161,21 @@ public class PoiImportExcelUtil {
      */
     public static boolean isExcel2007(String filePath)  {
         return filePath.matches("^.+\\.(?i)(xlsx)$");
+    }
+
+    public static void main(String[] args)throws Exception {
+        PoiImportExcelUtil util = new PoiImportExcelUtil();
+        File file = new File("C:\\Users\\tzxx\\Desktop\\12.xlsx");
+        InputStream is = new FileInputStream(file);
+        Workbook xssfWorkbook = util.getWorkbook(is,"12.xlsx");
+        for (int numSheet = 0; numSheet < xssfWorkbook.getNumberOfSheets(); numSheet++) {
+            XSSFSheet xssfSheet = (XSSFSheet) xssfWorkbook.getSheetAt(numSheet);
+            for (int rowNum = 14; rowNum <= xssfSheet.getLastRowNum(); rowNum++) {
+                XSSFRow xssfRow = xssfSheet.getRow(rowNum);
+
+                System.out.println(util.readCellValue(xssfWorkbook,xssfSheet, xssfRow, xssfRow.getCell(5), rowNum));
+                System.out.println(util.readCellValue(xssfWorkbook,xssfSheet, xssfRow, xssfRow.getCell(6), rowNum));
+            }
+        }
     }
 } 

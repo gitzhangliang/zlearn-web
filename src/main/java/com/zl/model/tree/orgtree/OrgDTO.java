@@ -60,13 +60,18 @@ public class OrgDTO implements ITreeNode<OrgDTO> {
 		this.name = name;
 	}
 	public static void main(String[] args) {
-		List<OrgDTO> list = new ArrayList<>();
-		list.add(new OrgDTO("1","","1"));
-		list.add(new OrgDTO("2","1","2"));
-		list.add(new OrgDTO("3","2","3"));
-		list.add(new OrgDTO("4","3","4"));
-		list.add(new OrgDTO("5","4","5"));
-		TreeBuilder<OrgDTO> tree = new TreeBuilder<>(list,"");
-		System.out.println(tree.treeJsonData());
+//		List<OrgDTO> list = new ArrayList<>();
+//		list.add(new OrgDTO("1","","1"));
+//		list.add(new OrgDTO("2","1","2"));
+//		list.add(new OrgDTO("3","2","3"));
+//		list.add(new OrgDTO("4","3","4"));
+//		list.add(new OrgDTO("5","4","5"));
+//		TreeBuilder<OrgDTO> tree = new TreeBuilder<>(list,"");
+//		System.out.println(tree.treeJsonData());
+		System.out.println(validateAmountIsError("20000.01"));
+
+	}
+	public static boolean validateAmountIsError(String amount){
+		return amount.matches("^(([1-9]\\d{0,9})|([0]))(\\.(\\d){0,2})?$");
 	}
 }

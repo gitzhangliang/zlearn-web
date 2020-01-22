@@ -12,13 +12,13 @@ import java.io.IOException;
 /**
  * @author tzxx
  */
-@Component
-@ServletComponentScan
 @WebFilter(urlPatterns = "/*",filterName = "loginFilter")
 public class CorsFilter implements Filter {
 	@Override
 
-	public void init(FilterConfig filterConfig) throws ServletException { }
+	public void init(FilterConfig filterConfig) throws ServletException {
+		System.out.println("");
+	}
 
 	@Override
 

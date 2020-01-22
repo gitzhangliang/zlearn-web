@@ -25,7 +25,7 @@ public class CoderServiceImpl implements ICoderService {
     @Resource
     private RedisTemplate<String,Object> redisTemplate;
 
-    @Cacheable(value = "codes",key = "'id_' + #id")
+    //@Cacheable(value = "codes",key = "'id_' + #id")
     @Override
     public Coder get(long id) {
         System.out.println("load for db");

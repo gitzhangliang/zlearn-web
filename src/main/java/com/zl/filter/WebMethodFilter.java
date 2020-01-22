@@ -1,5 +1,6 @@
 package com.zl.filter;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.*;

@@ -2,6 +2,7 @@ package com.zl.controller;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.zl.annotation.OriginalControllerReturnValue;
 import com.zl.domain.Coder;
 import com.zl.exception.CoderException;
 import com.zl.model.request.CoderDto;
@@ -21,6 +22,7 @@ public class LoginController {
     private CoderRepository coderRepository;
 
     @PostMapping("/login")
+    @OriginalControllerReturnValue
     public Object login(@RequestBody CoderDto coder){
         Coder c = coderRepository.findByName(coder.getName());
         if(c != null){
