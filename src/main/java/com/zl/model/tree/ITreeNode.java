@@ -3,7 +3,7 @@ package com.zl.model.tree;
 import java.util.List;
 
 /**
- * @author tzxx
+ * @author zl
  */
 public interface ITreeNode<T> {
 

@@ -4,13 +4,14 @@ package com.zl.model.tree.orgtree;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.zl.model.tree.ITreeNode;
 import com.zl.model.tree.TreeBuilder;
+import com.zl.utils.JsonUtil;
 import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author tzxx
+ * @author zl
  */
 @Data
 public class OrgDTO implements ITreeNode<OrgDTO> {
@@ -60,18 +61,17 @@ public class OrgDTO implements ITreeNode<OrgDTO> {
 		this.name = name;
 	}
 	public static void main(String[] args) {
-//		List<OrgDTO> list = new ArrayList<>();
-//		list.add(new OrgDTO("1","","1"));
-//		list.add(new OrgDTO("2","1","2"));
-//		list.add(new OrgDTO("3","2","3"));
-//		list.add(new OrgDTO("4","3","4"));
-//		list.add(new OrgDTO("5","4","5"));
-//		TreeBuilder<OrgDTO> tree = new TreeBuilder<>(list,"");
-//		System.out.println(tree.treeJsonData());
-		System.out.println(validateAmountIsError("20000.01"));
+		List<OrgDTO> list = new ArrayList<>();
+		list.add(new OrgDTO("1","","1"));
+		list.add(new OrgDTO("2","1","2"));
+		list.add(new OrgDTO("3","2","3"));
+		list.add(new OrgDTO("4","2","4"));
+		list.add(new OrgDTO("5","4","5"));
+		TreeBuilder<OrgDTO> tree = new TreeBuilder<>(list,"");
+		System.out.println(tree.treeJsonData());
+		System.out.println(		JsonUtil.objToStr(tree.getAllChildren("2"))
+		);
 
 	}
-	public static boolean validateAmountIsError(String amount){
-		return amount.matches("^(([1-9]\\d{0,9})|([0]))(\\.(\\d){0,2})?$");
-	}
+
 }

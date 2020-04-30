@@ -11,11 +11,10 @@ import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Workbook;
 
 /**
- * @author zhangliang
+ * @author zl
  * @date 2019/12/19.
  */
 @Slf4j
-@Data
 public class ExcelStyleAnnotationAndCancelDefaultHeadStyleCellWriteHandler extends ExcelStyleAnnotationCellWriteHandler {
 
     private WriteCellStyle headWriteCellStyleSelf;

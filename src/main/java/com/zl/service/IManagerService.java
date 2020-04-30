@@ -3,7 +3,7 @@ package com.zl.service;
 import com.zl.domain.Company;
 
 /**
- * @author tzxx
+ * @author zl
  * @date 2018/12/4.
  */
 public interface IManagerService {

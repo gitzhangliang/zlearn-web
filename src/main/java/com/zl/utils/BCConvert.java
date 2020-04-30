@@ -1,7 +1,7 @@
 package com.zl.utils;
 
 /**
- * @author tzxx
+ * @author zl
  */
 public class BCConvert {
     /**

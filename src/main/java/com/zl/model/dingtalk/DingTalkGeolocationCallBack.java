@@ -3,7 +3,7 @@ package com.zl.model.dingtalk;
 import lombok.Getter;
 import lombok.Setter;
 /**
- * @author tzxx
+ * @author zl
  */
 public class DingTalkGeolocationCallBack {	
 	/**

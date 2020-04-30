@@ -8,6 +8,8 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.zl.domain.Coder;
 import com.zl.exception.BasicException;
 import com.zl.repository.CoderRepository;
+import com.zl.repository.CompanyRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -18,12 +20,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author tzxx
+ * @author zl
  */
 @Component
 public class JwtInterceptor implements HandlerInterceptor {
-    @Resource
+    @Autowired
     private CoderRepository coderRepository;
+    @Resource
+    private CompanyRepository companyRepository;
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String token = request.getHeader("token");

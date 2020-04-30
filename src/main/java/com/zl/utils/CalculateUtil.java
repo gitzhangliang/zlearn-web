@@ -1,10 +1,13 @@
-package com.zl.utils;
+package com.tzxx.common.utils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * @author tzxx
+ */
 public class CalculateUtil {
     private CalculateUtil(){}
 

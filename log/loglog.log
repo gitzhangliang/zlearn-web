@@ -1,0 +1,245 @@
+11:25:06.126 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+11:25:06.136 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+11:25:06.274 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.zl.repository.CoderRepository.
+11:25:06.276 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.zl.repository.CompanyRepository.
+11:25:06.278 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.zl.repository.ManagerRepository.
+11:25:06.280 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 138ms. Found 0 repository interfaces.
+11:25:06.303 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+11:25:06.303 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+11:25:06.620 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 277ms. Found 3 repository interfaces.
+11:25:06.680 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+11:25:06.681 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+11:25:06.814 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.zl.repository.CoderRepository.
+11:25:06.814 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.zl.repository.CompanyRepository.
+11:25:06.815 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.zl.repository.ManagerRepository.
+11:25:06.816 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 63ms. Found 0 repository interfaces.
+11:25:08.113 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9e1a3de8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+11:25:08.268 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisConfig' of type [com.zl.config.redis.RedisConfig$$EnhancerBySpringCGLIB$$8cea7f1a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+11:25:08.589 [main] ERROR o.a.c.core.AprLifecycleListener - An incompatible version [1.2.5] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+11:25:08.728 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 666 (http)
+11:25:08.742 [main] ERROR o.a.c.core.AprLifecycleListener - An incompatible version [1.2.5] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+11:25:08.742 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-666"]
+11:25:08.753 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+11:25:08.753 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.13
+11:25:08.760 [main] ERROR o.a.c.core.AprLifecycleListener - An incompatible version [1.2.5] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+11:25:08.969 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+11:25:08.969 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 59839022 ms
+11:25:09.234 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+11:25:09.357 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+11:25:09.457 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+11:25:09.569 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.7.Final}
+11:25:09.571 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+11:25:09.758 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+11:25:10.000 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+11:25:10.869 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+11:25:13.051 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+11:25:13.054 [main] INFO  org.quartz.simpl.SimpleThreadPool - Job execution threads will use class loader of thread: main
+11:25:13.071 [main] INFO  o.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+11:25:13.071 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.0 created.
+11:25:13.075 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Using db table-based data access locking (synchronization).
+11:25:13.080 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - JobStoreCMT initialized.
+11:25:13.081 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.0) 'zwczzm' with instanceId 'DESKTOP-PG0ODHB1588130713053'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is clustered.
+
+11:25:13.082 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'zwczzm' initialized from an externally provided properties instance.
+11:25:13.082 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.0
+11:25:13.082 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@4c6fe482
+11:25:13.562 [main] INFO  com.zl.config.redis.RedisConfig - 初始化 -> [Redis CacheErrorHandler]
+11:25:13.892 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+11:25:13.946 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+11:25:14.048 [main] WARN  o.t.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+11:25:14.573 [main] INFO  o.s.s.quartz.SchedulerFactoryBean - Starting Quartz Scheduler now
+11:25:14.602 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - ClusterManager: detected 1 failed or restarted instances.
+11:25:14.602 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - ClusterManager: Scanning for instance "DESKTOP-PG0ODHB1588069314386"'s failed in-progress jobs.
+11:25:14.608 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler zwczzm_$_DESKTOP-PG0ODHB1588130713053 started.
+11:25:14.620 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-666"]
+11:25:14.623 [main] INFO  o.a.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+11:25:14.723 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 666 (http) with context path ''
+11:25:14.727 [main] INFO  com.zl.WebApplication - Started WebApplication in 59845.533 seconds (JVM running for 59847.636)
+11:28:08.666 [Thread-11] INFO  org.quartz.core.QuartzScheduler - Scheduler zwczzm_$_DESKTOP-PG0ODHB1588130713053 paused.
+11:28:08.693 [Thread-11] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+11:28:08.694 [Thread-11] INFO  o.s.s.quartz.SchedulerFactoryBean - Shutting down Quartz Scheduler
+11:28:08.694 [Thread-11] INFO  org.quartz.core.QuartzScheduler - Scheduler zwczzm_$_DESKTOP-PG0ODHB1588130713053 shutting down.
+11:28:08.694 [Thread-11] INFO  org.quartz.core.QuartzScheduler - Scheduler zwczzm_$_DESKTOP-PG0ODHB1588130713053 paused.
+11:28:08.696 [Thread-11] INFO  org.quartz.core.QuartzScheduler - Scheduler zwczzm_$_DESKTOP-PG0ODHB1588130713053 shutdown complete.
+11:28:08.710 [Thread-11] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+11:28:08.714 [Thread-11] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+11:28:08.722 [Thread-11] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+11:28:31.727 [main] INFO  com.zl.WebApplication - Starting WebApplication on DESKTOP-PG0ODHB with PID 15536 (F:\ideaworkspace\zlearn-web\target\classes started by tzxx in F:\ideaworkspace\zlearn-web)
+11:28:31.738 [main] INFO  com.zl.WebApplication - No active profile set, falling back to default profiles: default
+11:28:36.213 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+11:28:36.215 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+11:28:36.314 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.zl.repository.CoderRepository.
+11:28:36.315 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.zl.repository.CompanyRepository.
+11:28:36.316 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.zl.repository.ManagerRepository.
+11:28:36.317 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 96ms. Found 0 repository interfaces.
+11:28:36.323 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+11:28:36.323 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+11:28:36.433 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 106ms. Found 3 repository interfaces.
+11:28:36.445 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+11:28:36.446 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+11:28:36.504 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.zl.repository.CoderRepository.
+11:28:36.504 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.zl.repository.CompanyRepository.
+11:28:36.504 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.zl.repository.ManagerRepository.
+11:28:36.505 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 50ms. Found 0 repository interfaces.
+11:28:37.149 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$8c3cea36] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+11:28:37.309 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisConfig' of type [com.zl.config.redis.RedisConfig$$EnhancerBySpringCGLIB$$7b0d2b68] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+11:28:37.894 [main] ERROR o.a.c.core.AprLifecycleListener - An incompatible version [1.2.5] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+11:28:38.041 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 666 (http)
+11:28:38.054 [main] ERROR o.a.c.core.AprLifecycleListener - An incompatible version [1.2.5] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+11:28:38.054 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-666"]
+11:28:38.065 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+11:28:38.065 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.13
+11:28:38.073 [main] ERROR o.a.c.core.AprLifecycleListener - An incompatible version [1.2.5] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+11:28:38.383 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+11:28:38.384 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 6545 ms
+11:28:38.948 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+11:28:39.184 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+11:28:39.279 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+11:28:39.359 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.7.Final}
+11:28:39.361 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+11:28:39.519 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+11:28:39.743 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+11:28:40.497 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+11:28:43.035 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+11:28:43.038 [main] INFO  org.quartz.simpl.SimpleThreadPool - Job execution threads will use class loader of thread: main
+11:28:43.050 [main] INFO  o.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+11:28:43.050 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.0 created.
+11:28:43.053 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - Using db table-based data access locking (synchronization).
+11:28:43.055 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - JobStoreCMT initialized.
+11:28:43.056 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.0) 'zwczzm' with instanceId 'DESKTOP-PG0ODHB1588130923037'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is clustered.
+
+11:28:43.056 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'zwczzm' initialized from an externally provided properties instance.
+11:28:43.056 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.0
+11:28:43.056 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@49ea4b65
+11:31:25.762 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m4s68ms851µs800ns).
+11:31:51.189 [main] INFO  com.zl.config.redis.RedisConfig - 初始化 -> [Redis CacheErrorHandler]
+11:31:52.312 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+11:31:52.398 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+11:31:52.791 [main] WARN  o.t.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+11:31:54.349 [main] INFO  o.s.s.quartz.SchedulerFactoryBean - Starting Quartz Scheduler now
+11:31:54.379 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - ClusterManager: detected 1 failed or restarted instances.
+11:31:54.379 [main] INFO  o.s.s.quartz.LocalDataSourceJobStore - ClusterManager: Scanning for instance "DESKTOP-PG0ODHB1588130713053"'s failed in-progress jobs.
+11:31:54.384 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler zwczzm_$_DESKTOP-PG0ODHB1588130923037 started.
+11:31:54.396 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-666"]
+11:31:54.397 [main] INFO  o.a.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+11:31:54.418 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 666 (http) with context path ''
+11:31:54.421 [main] INFO  com.zl.WebApplication - Started WebApplication in 217.868 seconds (JVM running for 219.441)
+11:32:57.077 [Thread-34] INFO  org.quartz.core.QuartzScheduler - Scheduler zwczzm_$_DESKTOP-PG0ODHB1588130923037 paused.
+11:32:57.080 [Thread-34] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+11:32:57.081 [Thread-34] INFO  o.s.s.quartz.SchedulerFactoryBean - Shutting down Quartz Scheduler
+11:32:57.081 [Thread-34] INFO  org.quartz.core.QuartzScheduler - Scheduler zwczzm_$_DESKTOP-PG0ODHB1588130923037 shutting down.
+11:32:57.081 [Thread-34] INFO  org.quartz.core.QuartzScheduler - Scheduler zwczzm_$_DESKTOP-PG0ODHB1588130923037 paused.
+11:32:57.083 [Thread-34] INFO  org.quartz.core.QuartzScheduler - Scheduler zwczzm_$_DESKTOP-PG0ODHB1588130923037 shutdown complete.
+11:32:57.097 [Thread-34] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+11:32:57.102 [Thread-34] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+11:32:57.108 [Thread-34] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+11:33:04.654 [main] INFO  com.zl.WebApplication - Starting WebApplication on DESKTOP-PG0ODHB with PID 16348 (F:\ideaworkspace\zlearn-web\target\classes started by tzxx in F:\ideaworkspace\zlearn-web)
+11:33:04.660 [main] INFO  com.zl.WebApplication - No active profile set, falling back to default profiles: default
+11:33:05.733 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+11:33:05.734 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+11:33:05.834 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.zl.repository.CoderRepository.
+11:33:05.836 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.zl.repository.CompanyRepository.
+11:33:05.837 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.zl.repository.ManagerRepository.
+11:33:05.838 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 98ms. Found 0 repository interfaces.
+11:33:05.845 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+11:33:05.845 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+11:33:05.955 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 107ms. Found 3 repository interfaces.
+11:33:05.969 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+11:33:05.970 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+11:33:06.025 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.zl.repository.CoderRepository.
+11:33:06.026 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.zl.repository.CompanyRepository.
+11:33:06.026 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.zl.repository.ManagerRepository.
+11:33:06.026 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 46ms. Found 0 repository interfaces.
+11:50:09.350 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$145b36f1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+11:50:09.511 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisConfig' of type [com.zl.config.redis.RedisConfig$$EnhancerBySpringCGLIB$$32b7823] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+11:50:09.995 [main] ERROR o.a.c.core.AprLifecycleListener - An incompatible version [1.2.5] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+11:50:10.292 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 666 (http)
+11:50:10.315 [main] ERROR o.a.c.core.AprLifecycleListener - An incompatible version [1.2.5] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+11:50:10.315 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-666"]
+11:50:10.335 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+11:50:10.336 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.13
+11:50:10.352 [main] ERROR o.a.c.core.AprLifecycleListener - An incompatible version [1.2.5] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+11:50:10.627 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+11:50:10.627 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1025855 ms
+11:50:11.337 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+11:50:11.481 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+11:50:11.574 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+11:50:11.657 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.7.Final}
+11:50:11.659 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+11:50:11.815 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+11:50:12.039 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+11:50:12.793 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+13:30:18.227 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h38m51s966ms652µs600ns).
+13:36:47.698 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m29s471ms167µs199ns).
+14:18:04.692 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=40m34s340ms346µs).
+14:18:39.399 [main] INFO  com.zl.WebApplication - Starting WebApplication on DESKTOP-PG0ODHB with PID 5924 (F:\ideaworkspace\zlearn-web\target\classes started by tzxx in F:\ideaworkspace\zlearn-web)
+14:18:39.403 [main] INFO  com.zl.WebApplication - No active profile set, falling back to default profiles: default
+14:18:48.590 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+14:18:48.592 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+14:18:48.694 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.zl.repository.CoderRepository.
+14:18:48.695 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.zl.repository.CompanyRepository.
+14:18:48.697 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.zl.repository.ManagerRepository.
+14:18:48.697 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 100ms. Found 0 repository interfaces.
+14:18:48.705 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+14:18:48.705 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+14:18:48.815 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 107ms. Found 3 repository interfaces.
+14:18:48.828 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+14:18:48.829 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+14:18:48.883 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.zl.repository.CoderRepository.
+14:18:48.883 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.zl.repository.CompanyRepository.
+14:18:48.883 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.zl.repository.ManagerRepository.
+14:18:48.884 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 46ms. Found 0 repository interfaces.
+14:29:05.436 [main] INFO  com.zl.WebApplication - Starting WebApplication on DESKTOP-PG0ODHB with PID 9804 (F:\ideaworkspace\zlearn-web\target\classes started by tzxx in F:\ideaworkspace\zlearn-web)
+14:29:05.441 [main] INFO  com.zl.WebApplication - No active profile set, falling back to default profiles: default
+14:29:06.582 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+14:29:06.584 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+14:29:06.687 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.zl.repository.CoderRepository.
+14:29:06.689 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.zl.repository.CompanyRepository.
+14:29:06.691 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.zl.repository.ManagerRepository.
+14:29:06.691 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 102ms. Found 0 repository interfaces.
+14:29:06.699 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+14:29:06.699 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+14:29:06.809 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 107ms. Found 3 repository interfaces.
+14:29:06.824 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+14:29:06.825 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+14:29:06.883 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.zl.repository.CoderRepository.
+14:29:06.884 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.zl.repository.CompanyRepository.
+14:29:06.884 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.zl.repository.ManagerRepository.
+14:29:06.884 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 50ms. Found 0 repository interfaces.
+14:46:01.973 [main] INFO  com.zl.WebApplication - Starting WebApplication on DESKTOP-PG0ODHB with PID 18804 (F:\ideaworkspace\zlearn-web\target\classes started by tzxx in F:\ideaworkspace\zlearn-web)
+14:46:01.982 [main] INFO  com.zl.WebApplication - No active profile set, falling back to default profiles: default
+14:46:23.175 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+14:46:23.177 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+14:46:23.279 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.zl.repository.CoderRepository.
+14:46:23.281 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.zl.repository.CompanyRepository.
+14:46:23.282 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.zl.repository.ManagerRepository.
+14:46:23.283 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 100ms. Found 0 repository interfaces.
+14:46:23.290 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+14:46:23.291 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+14:46:23.401 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 107ms. Found 3 repository interfaces.
+14:46:23.414 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+14:46:23.415 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+14:46:23.473 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.zl.repository.CoderRepository.
+14:46:23.473 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.zl.repository.CompanyRepository.
+14:46:23.473 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.zl.repository.ManagerRepository.
+14:46:23.473 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 48ms. Found 0 repository interfaces.
+14:49:04.107 [main] INFO  com.zl.WebApplication - Starting WebApplication on DESKTOP-PG0ODHB with PID 8708 (F:\ideaworkspace\zlearn-web\target\classes started by tzxx in F:\ideaworkspace\zlearn-web)
+14:49:04.157 [main] INFO  com.zl.WebApplication - No active profile set, falling back to default profiles: default

@@ -3,7 +3,7 @@ package com.zl.model.sso;
 import lombok.Data;
 
 /**
- * @author tzxx
+ * @author zl
  * @date 2019/3/6.
  */
 @Data

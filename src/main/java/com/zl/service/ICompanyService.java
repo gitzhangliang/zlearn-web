@@ -5,7 +5,7 @@ import com.zl.domain.Company;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * @author tzxx
+ * @author zl
  * @date 2018/11/29.
  */
 public interface ICompanyService {

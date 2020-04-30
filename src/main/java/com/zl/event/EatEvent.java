@@ -5,7 +5,7 @@ import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
 
 /**
- * @author zhangliang
+ * @author zl
  * @date 2019/12/3.
  */
 @Getter

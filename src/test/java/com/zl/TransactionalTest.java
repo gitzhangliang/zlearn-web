@@ -149,4 +149,9 @@ public class TransactionalTest {
 		System.out.println(stopWatch.getTotalTimeMillis());
 
 	}
+
+	@Test
+	public void test7() {
+		companyService.saveForCheckPropagate();
+	}
 }

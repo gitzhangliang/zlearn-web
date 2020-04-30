@@ -5,7 +5,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 /**
- * @author zhangliang
+ * @author zl
  * @date 2020/1/7.
  */
 public class IdCardValidator implements ConstraintValidator<IdCard, String> {

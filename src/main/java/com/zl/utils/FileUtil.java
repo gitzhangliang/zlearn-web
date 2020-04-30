@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.net.URLEncoder;
 
 /**
- * @author tzxx
+ * @author zl
  */
 public class FileUtil {
 

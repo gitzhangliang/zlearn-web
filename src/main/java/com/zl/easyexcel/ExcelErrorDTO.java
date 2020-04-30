@@ -3,7 +3,7 @@ package com.zl.easyexcel;
 import lombok.Data;
 
 /**
- * @author zhangliang
+ * @author zl
  * @date 2019/11/15.
  */
 @Data

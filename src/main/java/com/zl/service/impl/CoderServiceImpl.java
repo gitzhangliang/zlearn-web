@@ -1,8 +1,10 @@
 package com.zl.service.impl;
 
 import com.zl.domain.Coder;
+import com.zl.job.util.SpringContextUtil;
 import com.zl.repository.CoderRepository;
 import com.zl.service.ICoderService;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.ApplicationContext;
@@ -10,24 +12,29 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 
 /**
- * @author tzxx
+ * @author zl
  * @date 2018/11/29.
  */
 @Service
-public class CoderServiceImpl implements ICoderService {
+public class CoderServiceImpl implements ICoderService, InitializingBean {
 
     @Resource
     private CoderRepository coderRepository;
     @Resource
     private RedisTemplate<String,Object> redisTemplate;
+    @Resource
+    private Coder cf;
 
     //@Cacheable(value = "codes",key = "'id_' + #id")
     @Override
     public Coder get(long id) {
+        SpringContextUtil.getBean(ICoderService.class);
+
         System.out.println("load for db");
         return findById(id);
     }
@@ -35,6 +42,7 @@ public class CoderServiceImpl implements ICoderService {
     @Cacheable(value = "cache1")
     @Override
     public Coder getForKeyGenerator(long id) {
+
         System.out.println("load for db");
         return findById(id);
     }
@@ -69,5 +77,11 @@ public class CoderServiceImpl implements ICoderService {
     @Override
     public void saveCoder(Coder coder){
         coderRepository.save(coder);
+    }
+
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+
     }
 }

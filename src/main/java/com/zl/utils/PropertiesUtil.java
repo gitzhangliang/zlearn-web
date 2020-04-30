@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * @author tzxx
+ * @author zl
  * @date 2019/3/12.
  */
 public class PropertiesUtil {

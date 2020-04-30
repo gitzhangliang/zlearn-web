@@ -9,7 +9,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @author zhangliang
+ * @author zl
  * @date 2020/1/7.
  */
 @Target({ElementType.FIELD})

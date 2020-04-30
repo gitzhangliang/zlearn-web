@@ -165,7 +165,7 @@ public class PoiImportExcelUtil {
 
     public static void main(String[] args)throws Exception {
         PoiImportExcelUtil util = new PoiImportExcelUtil();
-        File file = new File("C:\\Users\\tzxx\\Desktop\\12.xlsx");
+        File file = new File("C:\\Users\\zl\\Desktop\\12.xlsx");
         InputStream is = new FileInputStream(file);
         Workbook xssfWorkbook = util.getWorkbook(is,"12.xlsx");
         for (int numSheet = 0; numSheet < xssfWorkbook.getNumberOfSheets(); numSheet++) {

@@ -3,7 +3,7 @@ package com.zl.utils;
 import java.math.BigDecimal;
 
 /**
- * @author zhangliang
+ * @author zl
  * @date 2019/11/21.
  */
 public class MoneyUtil {

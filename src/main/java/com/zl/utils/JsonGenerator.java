@@ -28,7 +28,7 @@ import java.util.List;
  * 4.自定义javabean的集合或数组
  * 5.Date类型
  * 6.BigDecimal类型
- * @author zhangliang
+ * @author zl
  * @date 2019/11/11.
  */
 @Slf4j

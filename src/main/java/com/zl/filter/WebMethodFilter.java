@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author tzxx
+ * @author zl
  */
 @WebFilter(filterName = "webMethodFilter", urlPatterns = "/*")
 public class WebMethodFilter implements Filter {

@@ -8,7 +8,7 @@ import java.io.OutputStream;
 import java.util.Random;
 
 /**
- * @author tzxx
+ * @author zl
  */
 public class VerifyCode {
 	private int w = 80;

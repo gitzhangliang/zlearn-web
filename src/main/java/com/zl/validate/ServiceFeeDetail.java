@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 import java.util.Set;
 
 /**
- * @author zhangliang
+ * @author zl
  * @date 2019/12/17.
  */
 @GroupSequenceProvider(ServiceFeeDetailGroupSequenceProvider.class)

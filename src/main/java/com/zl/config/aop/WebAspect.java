@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author tzxx
+ * @author zl
  */
 @Aspect
 @Component
@@ -27,8 +27,12 @@ public class WebAspect {
 	private void writeLog() {
 		//declare pointcut
 	}
+	@Pointcut("@annotation(com.zl.annotation.OriginalControllerReturnValue)")
+	public void pointcut() {
+		// do nothing
+	}
 
-	@Around("writeLog()")
+	@Around("pointcut()")
 	public Object writeLogAbountMethodInfo(ProceedingJoinPoint joinPoint) throws Throwable {
 		Thread current = Thread.currentThread();
 		Object object = null;

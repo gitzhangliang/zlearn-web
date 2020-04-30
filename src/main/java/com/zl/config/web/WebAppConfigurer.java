@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import javax.annotation.Resource;
 
 /**
- * @author tzxx
+ * @author zl
  */
 @Configuration
 public class WebAppConfigurer implements WebMvcConfigurer{

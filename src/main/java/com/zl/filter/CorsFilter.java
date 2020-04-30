@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author tzxx
+ * @author zl
  */
 @WebFilter(urlPatterns = "/*",filterName = "loginFilter")
 public class CorsFilter implements Filter {

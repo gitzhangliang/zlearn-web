@@ -3,7 +3,7 @@ package com.zl.exception;
 import lombok.Getter;
 
 /**
- * @author tzxx
+ * @author zl
  */
 @Getter
 public class BasicException extends RuntimeException {

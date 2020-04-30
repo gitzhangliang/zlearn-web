@@ -5,7 +5,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 /**
- * @author tzxx
+ * @author zl
  * @date 2018/11/29.
  */
 @Entity

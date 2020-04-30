@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>WebSocket Examples: Reverse</title>
-	<style type="text/css">
-		#connect-container {
-			float: left;
-			width: 400px
-		}
+    <title>WebSocket Examples: Reverse</title>
+    <style type="text/css">
+        #connect-container {
+            float: left;
+            width: 400px
+        }
 
-		#connect-container div {
-			padding: 5px;
-		}
+        #connect-container div {
+            padding: 5px;
+        }
 
-		#console-container {
-			float: left;
-			margin-left: 15px;
-			width: 400px;
-		}
+        #console-container {
+            float: left;
+            margin-left: 15px;
+            width: 400px;
+        }
 
-		#console {
-			border: 1px solid #CCCCCC;
-			border-right-color: #999999;
-			border-bottom-color: #999999;
-			height: 170px;
-			overflow-y: scroll;
-			padding: 5px;
-			width: 100%;
-		}
+        #console {
+            border: 1px solid #CCCCCC;
+            border-right-color: #999999;
+            border-bottom-color: #999999;
+            height: 170px;
+            overflow-y: scroll;
+            padding: 5px;
+            width: 100%;
+        }
 
-		#console p {
-			padding: 0;
-			margin: 0;
-		}
-	</style>
-	<script type="text/javascript">
+        #console p {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <script type="text/javascript">
         var ws = null;
 
         function setConnected(connected) {
@@ -44,7 +44,10 @@
 
         function connect() {
             var target = document.getElementById('target').value;
-            ws = new WebSocket("ws://172.16.227.39:666/chat?chatId=12");
+
+            //ws = new WebSocket("ws://172.16.226.116:8887/webSocket/alterationLive?alterationId=1");
+            ws = new WebSocket("ws://xc.tztech.net/webSocket/alterationLive?alterationId=1");
+
             ws.onopen = function () {
                 setConnected(true);
                 log('Info: WebSocket connection opened.');
@@ -95,30 +98,30 @@
             }
             console.scrollTop = console.scrollHeight;
         }
-	</script>
+    </script>
 </head>
 <body onload="updateTarget()">
 <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websockets rely on Javascript being enabled. Please enable
-	Javascript and reload this page!</h2></noscript>
+    Javascript and reload this page!</h2></noscript>
 <div>
-	<div id="connect-container">
-		<div>
-			<input id="target" type="text" size="40" style="width: 350px" value="/chat"/>
-		</div>
-		<div>
-			<button id="connect" onclick="connect();">Connect</button>
-			<button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
-		</div>
-		<div>
-			<textarea id="message" style="width: 350px">Here is a message!</textarea>
-		</div>
-		<div>
-			<button id="reverse" onclick="reverse();" disabled="disabled">Reverse message</button>
-		</div>
-	</div>
-	<div id="console-container">
-		<div id="console"></div>
-	</div>
+    <div id="connect-container">
+        <div>
+            <input id="target" type="text" size="40" style="width: 350px" value="/chat"/>
+        </div>
+        <div>
+            <button id="connect" onclick="connect();">Connect</button>
+            <button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
+        </div>
+        <div>
+            <textarea id="message" style="width: 350px">Here is a message!</textarea>
+        </div>
+        <div>
+            <button id="reverse" onclick="reverse();" disabled="disabled">Reverse message</button>
+        </div>
+    </div>
+    <div id="console-container">
+        <div id="console"></div>
+    </div>
 </div>
 </body>
 </html>

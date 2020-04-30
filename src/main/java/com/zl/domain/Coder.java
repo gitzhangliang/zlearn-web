@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * @author tzxx
+ * @author zl
  * @date 2018/11/29.
  */
 @Entity

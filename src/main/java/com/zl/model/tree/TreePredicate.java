@@ -1,7 +1,7 @@
 package com.zl.model.tree;
 
 /**
- * @author zhangliang
+ * @author zl
  * @date 2019/10/29.
  */
 @FunctionalInterface

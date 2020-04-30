@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @author tzxx
+ * @author zl
  */
 @Getter@Setter
 public class JsonResult<T> {

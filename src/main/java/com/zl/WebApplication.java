@@ -9,12 +9,12 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 
 /**
- * @author tzxx
+ * @author zl
  */
 @EnableCaching
 @SpringBootApplication
 @EnableWebSocket
-@MapperScan("com.zl.mapper")
+@MapperScan({"com.zl.mapper","com.zl.job.dao"})
 @ServletComponentScan
 public class WebApplication {
 

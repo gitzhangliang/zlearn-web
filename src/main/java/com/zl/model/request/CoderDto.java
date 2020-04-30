@@ -3,7 +3,7 @@ package com.zl.model.request;
 import lombok.Data;
 
 /**
- * @author tzxx
+ * @author zl
  * @date 2019/5/30.
  */
 @Data

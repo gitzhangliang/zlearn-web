@@ -8,13 +8,10 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
- * @author tzxx
+ * @author zl
  * @date 2019/2/12.
  */
 public class SimpleWebSocketHandler extends TextWebSocketHandler {

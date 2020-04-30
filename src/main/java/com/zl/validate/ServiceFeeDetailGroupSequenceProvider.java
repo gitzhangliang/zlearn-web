@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author zhangliang
+ * @author zl
  * @date 2020/1/9.
  */
 public class ServiceFeeDetailGroupSequenceProvider implements DefaultGroupSequenceProvider<ServiceFeeDetail> {

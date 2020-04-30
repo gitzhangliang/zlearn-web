@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * @author tzxx
+ * @author zl
  */
 public class Sheet implements Iterable<SubTable>{
 	private List<SubTable> tables = new ArrayList<SubTable>();

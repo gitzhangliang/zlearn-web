@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  * 日期工具类 默认使用 "yyyy-MM-dd HH:mm:ss" 格式化日期
- * @author tzxx
+ * @author zl
  */
 public class DateUtil {
 

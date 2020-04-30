@@ -4,7 +4,7 @@ import java.lang.annotation.*;
 
 /**
  *不通过统一的响应处理，可以使用此注解
- * @author tzxx
+ * @author zl
  */
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

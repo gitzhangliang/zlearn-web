@@ -11,7 +11,7 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 
 /**
  * 开启WebSocket支持
- * @author tzxx
+ * @author zl
  */
 @Configuration
 public class WebSocketConfig implements WebSocketConfigurer {

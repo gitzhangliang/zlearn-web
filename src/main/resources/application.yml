@@ -47,6 +47,31 @@ spring:
       max-request-size: -1
   mvc:
     static-path-pattern: /**
+  quartz:
+    auto-startup: true
+    jdbc:
+      initialize-schema: never
+    scheduler-name: zwczzm
+    job-store-type: jdbc
+    overwrite-existing-jobs: true
+    properties:
+      org:
+        quartz:
+          scheduler:
+            instanceName: zwczzm
+            instanceId: AUTO
+          jobStore:
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            tablePrefix: QRTZ_
+            isClustered: true
+            clusterCheckinInterval: 10000
+            useProperties: false
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool
+            threadCount: 10
+            threadPriority: 5
+            threadsInheritContextClassLoaderOfInitializingThread: true
 
 logging:
   config: classpath:logback.xml
