@@ -49,11 +49,16 @@ public class LambdaSqlBuilder extends AbstractSqlBuilder<LambdaSqlBuilder> {
     }
     
     public LambdaSqlBuilder from(Class<?> table,String alias){
-        analysisTable(table,alias);
+        from(null,alias,table);
+        return this;
+    }
+
+    public LambdaSqlBuilder from(String table,String alias,Class<?> tableClass){
+        analysisTable(tableClass,alias,table);
         sqlBd.append(" from ");
-        sqlBd.append(tableMap.get(table));
+        sqlBd.append(tableMap.get(tableClass));
         sqlBd.append(" ");
-        sqlBd.append(tableAliasMap.get(table));
+        sqlBd.append(tableAliasMap.get(tableClass));
         return this;
     }
 
@@ -62,7 +67,12 @@ public class LambdaSqlBuilder extends AbstractSqlBuilder<LambdaSqlBuilder> {
     }
 
     public LambdaSqlBuilder leftJoin(Class<?> table,String alias){
-        join(table,alias,"left join");
+        leftJoin(null,alias,table);
+        return this;
+    }
+
+    public LambdaSqlBuilder leftJoin(String table,String alias,Class<?> tableClass){
+        join(table,tableClass,alias,"left join");
         return this;
     }
 
@@ -70,8 +80,14 @@ public class LambdaSqlBuilder extends AbstractSqlBuilder<LambdaSqlBuilder> {
         return rightJoin(table,null);
     }
 
+
     public LambdaSqlBuilder rightJoin(Class<?> table,String alias){
-        join(table,alias,"right join");
+        rightJoin(null,alias,table);
+        return this;
+    }
+
+    public LambdaSqlBuilder rightJoin(String table,String alias,Class<?> tableClass){
+        join(table,tableClass,alias,"right join");
         return this;
     }
 
@@ -80,18 +96,23 @@ public class LambdaSqlBuilder extends AbstractSqlBuilder<LambdaSqlBuilder> {
     }
 
     public LambdaSqlBuilder innerJoin(Class<?> table,String alias){
-        join(table,alias,"inner join");
+        innerJoin(null,alias,table);
         return this;
     }
 
-    private void join(Class<?> table,String alias,String joinType){
-        analysisTable(table,alias);
+    public LambdaSqlBuilder innerJoin(String table,String alias,Class<?> tableClass){
+        join(table,tableClass,alias,"inner join");
+        return this;
+    }
+
+    private void join(String table,Class<?> tableClass,String alias,String joinType){
+        analysisTable(tableClass,alias,table);
         sqlBd.append(" ");
         sqlBd.append(joinType);
         sqlBd.append(" ");
-        sqlBd.append(tableMap.get(table));
+        sqlBd.append(tableMap.get(tableClass));
         sqlBd.append(" ");
-        sqlBd.append(tableAliasMap.get(table));
+        sqlBd.append(tableAliasMap.get(tableClass));
     }
 
     public <T,R,K,V>LambdaSqlBuilder on(SqlFunction<T,R> column0,SqlFunction<K,V> column1){
@@ -375,15 +396,17 @@ public class LambdaSqlBuilder extends AbstractSqlBuilder<LambdaSqlBuilder> {
         return implClass.substring(implClass.lastIndexOf('/')+1);
     }
 
-    private void analysisTable(Class<?> table,String alias){
-        String name = table.getSimpleName();
-        String lineName = humpToLine(name.substring(0, 1).toLowerCase(Locale.ENGLISH) + name.substring(1));
-        tableMap.put(table,lineName);
+    private void analysisTable(Class<?> tableClass,String alias,String table){
+        String name = tableClass.getSimpleName();
+        if (StringUtils.isBlank(table)) {
+            table = humpToLine(name.substring(0, 1).toLowerCase(Locale.ENGLISH) + name.substring(1));
+        }
+        tableMap.put(tableClass,table);
         if (StringUtils.isBlank(alias)) {
-            tableAliasMap.put(table,lineName+"_0");
-            tableClassNameAliasMap.put(name,lineName+"_0");
+            tableAliasMap.put(tableClass,table+"_0");
+            tableClassNameAliasMap.put(name,table+"_0");
         }else {
-            tableAliasMap.put(table,alias);
+            tableAliasMap.put(tableClass,alias);
             tableClassNameAliasMap.put(name,alias);
 
         }
