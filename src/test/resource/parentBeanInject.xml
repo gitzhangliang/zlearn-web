@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- sources/chapter3/parentBeanInject.xml表示父容器配置-->  
+<!--注意此处可能子容器也定义一个该Bean-->  
+<bean id="helloApi" class="com.zl.spring.di.HelloImpl4">
+<property name="index" value="1"/>  
+<property name="message" value="Hello Parent!"/>  
+</bean>    	
+</beans>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean id="listBean" class="com.zl.spring.di.ListTestBean">
+    <property name="values">  
+        <list>  
+            <value>1</value>  
+            <value>2</value>  
+            <value>3</value>  
+        </list>  
+   </property>  
+</bean>
+
+<bean id="arrayBean" class="com.zl.spring.di.ArrayTestBean">
+    <property name="array">  
+        <array>  
+            <value>1</value>  
+            <value>2</value>  
+            <value>3</value>  
+        </array>  
+   </property>
+       <property name="array2">  
+        <array>
+        	<array>  
+            	<value>1</value>
+            </array>
+            <array>  
+            	<value>2</value>
+            </array>
+            <array>  
+            	<value>3</value>
+            </array>  
+        </array>  
+   </property>  
+</bean>
+<bean id="mapBean" class="com.zl.spring.di.MapTestBean">
+    <property name="values">  
+        <map> 
+        	<entry key="1" value="1"></entry> 
+        	<entry key="2" value="2"></entry> 
+        	<entry key="3" value="3"></entry> 
+        	
+        </map>  
+   </property>  
+</bean>
+
+<bean id="propertiesBean" class="com.zl.spring.di.PropertiesTestBean">
+    <property name="values">  
+		<props>
+			<prop key="1">1</prop>
+			<prop key="2">2</prop>
+			<prop key="3">3</prop>
+			
+		</props> 
+   </property>  
+</bean>      	
+</beans>

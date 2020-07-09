@@ -1,5 +1,9 @@
 package com.zl.utils;
 
+import com.zl.domain.Coder;
+import org.apache.poi.ss.formula.functions.T;
+
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
@@ -81,4 +85,25 @@ public class CollectionUtil {
         }
         return map;
     }
+    public static <T> Map<String,List<Object>> rowColumnReverse(List<T> data, Class<T> clazz){
+        Map<String,List<Object>> map = new HashMap<>(16);
+        Field[] declaredFields = clazz.getDeclaredFields();
+        for (Field field : declaredFields) {
+            String fieldName = field.getName();
+            String getMethod ="get"+firstLetterToUpper(fieldName);
+            for (T datum : data) {
+                try {
+                    Method m = clazz.getMethod(getMethod);
+                    Object aValue = m.invoke(datum);
+                    List<Object> list = map.computeIfAbsent(fieldName, f -> new ArrayList<>());
+                    list.add(aValue);
+                } catch (Exception e) {
+                    throw new IllegalArgumentException(e.getMessage());
+                }
+            }
+
+        }
+        return map;
+    }
+
 }

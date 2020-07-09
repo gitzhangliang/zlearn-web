@@ -28,6 +28,7 @@ public class PropertiesUtil {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+
             if (inputStream != null) {
                 try {
                     inputStream.close();

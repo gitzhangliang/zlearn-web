@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- 定义依赖Bean -->  
+<bean id="helloApi" class="com.zl.spring.di.HelloImpl3"/>
+<bean id="helloApi2" class="com.zl.spring.di.HelloImpl4"/>
+<!-- 通过构造器注入 -->  
+<bean id="bean1" class="com.zl.spring.di.HelloApiDecorator">
+<constructor-arg index="0" ref="helloApi"/><!--helloApi 必须有无参构造函数  -->   
+</bean>  
+<!-- 通过构造器注入 -->  
+<bean id="bean2" class="com.zl.spring.di.HelloApiDecorator">
+    <property name="helloApi"><ref bean="helloApi2"/></property>  
+</bean>    	
+</beans>

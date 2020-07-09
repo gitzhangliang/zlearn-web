@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- 静态工厂类Bean定义配置文件-->
+<bean id="byIndex"  
+class="com.zl.spring.di.DependencyInjectByStaticFactory" factory-method="newInstance">
+<constructor-arg index="0" value="Hello World!"/>  
+<constructor-arg index="1" value="1"/>  
+</bean>  
+<bean id="byType"  
+class="com.zl.spring.di.DependencyInjectByStaticFactory" factory-method="newInstance">
+<constructor-arg type="java.lang.String" value="Hello World!"/>  
+       <constructor-arg type="int" value="2"/>  
+</bean>  
+<bean id="byName"  
+class="com.zl.spring.di.DependencyInjectByStaticFactory" factory-method="newInstance">
+       <constructor-arg name="message" value="Hello World!"/>  
+       <constructor-arg name="index" value="3"/>  
+</bean>    	
+</beans>

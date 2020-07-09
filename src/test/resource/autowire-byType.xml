@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- <bean cladig_DI.HelloImpl3"/>
+从自动装配候选者中去除  
+<bean cladig_DI.HelloImpl4"  autowire-candidate="false"/>
+<bean id="bean" cladig_DI.HelloApiDecorator"
+     autowire="byType"/> -->
+     
+     
+ <bean class="com.zl.spring.di.HelloImpl3"/>
+<bean class="com.zl.spring.di.HelloImpl4" primary="true"/>
+<bean id="bean" class="com.zl.spring.di.HelloApiDecorator" autowire="byType"/>
+</beans>

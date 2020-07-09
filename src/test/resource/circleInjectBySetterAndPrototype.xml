@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans  xmlns="http://www.springframework.org/schema/beans"  
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+        xsi:schemaLocation="
+           http://www.springframework.org/schema/beans  
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+ 
+
+ <!-- 定义Bean配置文件，注意scope都是“prototype”-->
+    <!--错误的  -->
+<!--    <bean id="circleA" class="com.zl.spring.circledi.CircleA" scope="prototype">
+        <property name="circleB" ref="circleB"/>  
+   </bean>  
+   <bean id="circleB" class="com.zl.spring.circledi.CircleB" scope="prototype">
+       <property name="circleC" ref="circleC"/>  
+   </bean>  
+   <bean id="circleC" class="com.zl.spring.circledi.CircleC" scope="prototype">
+       <property name="circleA" ref="circleA"/>  
+   </bean>-->
+   <!--正确的  --> 
+    <bean id="circleA" class="com.zl.spring.circledi.CircleA">
+        <property name="circleB" ref="circleB"/>  
+   </bean>  
+   <bean id="circleB" class="com.zl.spring.circledi.CircleB">
+       <property name="circleC" ref="circleC"/>  
+   </bean>  
+   <bean id="circleC" class="com.zl.spring.circledi.CircleC">
+       <property name="circleA" ref="circleA"/>  
+   </bean>
+</beans>  
