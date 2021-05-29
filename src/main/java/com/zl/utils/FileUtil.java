@@ -1,6 +1,7 @@
 package com.zl.utils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.net.URLEncoder;
 
 /**
@@ -11,6 +12,8 @@ public class FileUtil {
 	private static  String[] docMimeTypes = {"doc","docx","xlsx","xls","ppt","pptx","txt"};
 
 	public static  String getFileMimeType(String fileOriginalName){
+		File file = new File("");
+		file.delete();
 		return fileOriginalName.substring(fileOriginalName.lastIndexOf(".")+1);
 	}
 

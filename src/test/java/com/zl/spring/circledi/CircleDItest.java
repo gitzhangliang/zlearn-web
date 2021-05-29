@@ -20,7 +20,7 @@ public class CircleDItest {
 	    }
 	}
 	
-	@Test(expected = BeanCurrentlyInCreationException.class)
+	@Test
 	public void testCircleBySetterAndPrototype () throws Throwable {  
 	    try {  
 	        @SuppressWarnings("spring/resource") ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
