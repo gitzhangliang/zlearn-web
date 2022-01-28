@@ -7,30 +7,33 @@ import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.util.CellRangeAddress;
 
-import java.util.List;
-
-/**
+/**合并单元格的抽象基类。对于每个单元格都会根据GenericMergeFunction返回的GenericMergeBO判断是否需要合并
  * @author zhangliang
  * @date 2020/5/25.
  */
-public abstract class AbstractGenericMergeStrategy<T extends GenericMerge> extends AbstractMergeStrategy {
-    protected List<T> list;
+public abstract class AbstractGenericMergeStrategy extends AbstractMergeStrategy {
+
     protected int headRowNumber = 1;
 
-    protected AbstractGenericMergeStrategy(List<T> list){
-        this.list = list;
-    }
-    protected AbstractGenericMergeStrategy(List<T> list, int headRowNumber){
-        this.list = list;
+    protected GenericMergeFunction function;
+
+    protected AbstractGenericMergeStrategy(int headRowNumber){
         this.headRowNumber = headRowNumber;
+    }
+    public AbstractGenericMergeStrategy(int headRowNumber,GenericMergeFunction function) {
+        this.headRowNumber = headRowNumber;
+        this.function = function;
     }
 
     @Override
-    protected void merge(Sheet sheet, Cell cell, Head head, int relativeRowIndex) {
+    protected void merge(Sheet sheet, Cell cell, Head head, Integer relativeRowIndex) {
         int columnIndex = cell.getColumnIndex();
         int rowIndex = cell.getRowIndex();
-        T t = list.get(rowIndex - headRowNumber);
-        GenericMergeBO bo = t.merge(columnIndex);
+        GenericMergeFunction.GenericMergeFunctionHelper helper = new GenericMergeFunction.GenericMergeFunctionHelper();
+        helper.setColumnIndex(columnIndex);
+        helper.setRowIndex(rowIndex);
+        helper.setRelativeRowIndex(relativeRowIndex);
+        GenericMergeBO bo =function.apply(helper);
         if (bo != null){
             merge(sheet,cell,bo);
         }

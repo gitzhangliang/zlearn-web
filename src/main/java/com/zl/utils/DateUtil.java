@@ -13,12 +13,15 @@ import java.util.Date;
  * @author zl
  */
 public class DateUtil {
+    public static final String SIMPLE_ZN_TIME_SPLIT_PATTERN = "yyyy年MM月dd日";
 
-    public static final String FORMAT = "yyyyMMdd";
     /**
      * 英文简写（默认）如：2010-12-01
      */
-    public static final String FORMAT_SHORT = "yyyy-MM-dd";
+    public static final String SIMPLE_TIME_SPLIT_PATTERN = "yyyy-MM-dd";
+
+    public static final String FORMAT = "yyyyMMdd";
+
     /**
      * 英文全称 如：2010-12-01 23:15:06
      */
@@ -40,6 +43,10 @@ public class DateUtil {
      */
     public static final String FORMAT_FULL_CN = "yyyy年MM月dd日  HH时mm分ss秒SSS毫秒";
 
+    public static String getDateFormat(Date date, String dateFormatType) {
+        SimpleDateFormat simformat = new SimpleDateFormat(dateFormatType);
+        return simformat.format(date);
+    }
 
 
     /**

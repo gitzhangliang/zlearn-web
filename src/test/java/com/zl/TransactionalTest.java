@@ -1,7 +1,9 @@
 package com.zl;
+import com.zl.dao.ISqlDao;
 import com.zl.domain.Coder;
 import com.zl.domain.Company;
 import com.zl.domain.Manager;
+import com.zl.model.sql.LambdaQuerySqlBuilder;
 import com.zl.repository.CoderRepository;
 import com.zl.repository.CompanyRepository;
 import com.zl.repository.ManagerRepository;
@@ -20,6 +22,7 @@ import javax.annotation.Resource;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -36,7 +39,20 @@ public class TransactionalTest {
 	private ManagerRepository managerRepository;
 	@Resource
 	private JdbcTemplate jdbcTemplate;
-
+	@Resource
+	private ISqlDao sqlDao;
+	@Test
+	public void test11() {
+		LambdaQuerySqlBuilder builder = new LambdaQuerySqlBuilder();
+		String sql = builder.select(Coder::getName, Coder::getAge)
+				.from(Coder.class, "c")
+				.where()
+				.like(Coder::getName, "员3")
+				.sql();
+		System.out.println(sql);
+		List<Coder> list = sqlDao.list(sql, Coder.class, builder.getParams().toArray());
+		System.out.println(list.size());
+	}
 	/**前提是：该service类没有@Transactional被修饰
 	 在一个Service内部，事务方法之间的嵌套调用，普通方法和事务方法之间的嵌套调用，都不会开启新的事务！
 	 为什么会这样呢？

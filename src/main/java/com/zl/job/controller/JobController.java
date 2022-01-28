@@ -57,4 +57,25 @@ public class JobController {
         jobService.resume(jobId);
     }
 
+    @GetMapping("/addCron/{beanName}/{methodName}")
+    public void addCronJob(@PathVariable String beanName,
+                           @PathVariable String methodName,
+                           @RequestParam(required = false) String remark,
+                           @RequestParam String cron) {
+        JobDTO dto = new JobDTO();
+        dto.setBeanName(beanName);
+        dto.setMethodName(methodName);
+        dto.setCronExpression(cron);
+        dto.setStatus("1");
+        dto.setTriggerType(1);
+        dto.setRemark(remark);
+        jobService.create(dto);
+    }
+
+    @GetMapping("/delete/{jobId}")
+    public void deleteJobByGet(@PathVariable Long jobId) {
+        jobService.delete(jobId);
+    }
+
+
 }

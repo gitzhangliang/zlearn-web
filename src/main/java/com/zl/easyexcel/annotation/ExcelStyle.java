@@ -6,7 +6,7 @@ import org.apache.poi.ss.usermodel.VerticalAlignment;
 import java.lang.annotation.*;
 
 /**
- * @author zl
+ * @author zhangliang
  * @date 2019/12/19.
  */
 @Target({ElementType.FIELD,ElementType.TYPE})
@@ -17,4 +17,6 @@ public @interface ExcelStyle {
     short fontHeightInPoints() default 12;
     HorizontalAlignment horizontalAlignment() default HorizontalAlignment.LEFT;
     VerticalAlignment verticalAlignment() default VerticalAlignment.CENTER;
+    boolean wrapText() default false;
+    boolean richText() default false;
 }
